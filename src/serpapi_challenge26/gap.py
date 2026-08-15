@@ -51,6 +51,12 @@ class Thresholds:
     score_open_step: int = 15
     score_open_none: int = 25
 
+    # Weights for the weighted average of the four signal scores.
+    weight_temporal: float = 0.35
+    weight_whitespace: float = 0.25
+    weight_stagnation: float = 0.25
+    weight_open: float = 0.15
+
 
 THRESHOLDS = Thresholds()
 
@@ -92,8 +98,13 @@ class GapAnalyzer:
         stagnation = self.citation_stagnation()
         open_questions = self.open_questions()
 
-        signals = [temporal, whitespace, stagnation, open_questions]
-        score = round(sum(signal["score"] for signal in signals) / len(signals))
+        weighted = (
+            temporal["score"] * THRESHOLDS.weight_temporal
+            + whitespace["score"] * THRESHOLDS.weight_whitespace
+            + stagnation["score"] * THRESHOLDS.weight_stagnation
+            + open_questions["score"] * THRESHOLDS.weight_open
+        )
+        score = round(weighted)
 
         return GapReport(
             score=score,

@@ -80,3 +80,49 @@ def test_filter_papers_keeps_unknown_years():
     papers = [Paper(title="a", year=2010), Paper(title="b", year=None)]
     filtered = Scholar.filter_papers(papers, year_low=2020, year_high=2025)
     assert [paper.title for paper in filtered] == ["b"]
+
+
+class _FakeResults(dict):
+    def __init__(self, papers, has_next):
+        super().__init__(organic_results=papers, pagination={"next": "x"} if has_next else {})
+
+
+class _FakeClient:
+    def __init__(self, pages):
+        self.pages = pages
+        self.calls = 0
+
+    def search(self, params):
+        self.calls += 1
+        return self.pages.pop(0)
+
+
+def _raw(title, year):
+    return {
+        "title": title,
+        "publication_info": {"summary": f"A - Venue, {year} - Src"},
+        "inline_links": {},
+        "snippet": "",
+        "resources": [],
+    }
+
+
+def test_search_all_respects_max_results_and_paginates():
+    page1 = _FakeResults([_raw(f"p{i}", 2020) for i in range(20)], has_next=True)
+    page2 = _FakeResults([_raw(f"q{i}", 2020) for i in range(20)], has_next=False)
+    client = _FakeClient([page1, page2])
+    scholar = Scholar(client)
+
+    papers = scholar.search_all("x", max_results=25)
+    assert len(papers) == 25
+    assert client.calls == 2
+
+
+def test_search_all_stops_when_no_next():
+    page1 = _FakeResults([_raw(f"p{i}", 2020) for i in range(20)], has_next=False)
+    client = _FakeClient([page1])
+    scholar = Scholar(client)
+
+    papers = scholar.search_all("x", max_results=50)
+    assert len(papers) == 20
+    assert client.calls == 1

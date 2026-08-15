@@ -1,4 +1,4 @@
-from serpapi_challenge26.gap import GapAnalyzer
+from serpapi_challenge26.gap import GapAnalyzer, THRESHOLDS
 from serpapi_challenge26.scholar import Paper
 
 
@@ -10,6 +10,24 @@ def test_analyze_score_is_in_range():
     papers = [_paper(f"Topic {i}", 2020, i) for i in range(10)]
     report = GapAnalyzer(papers).analyze()
     assert 0 <= report.score <= 100
+
+
+def test_score_uses_weighted_average():
+    papers = [_paper(f"Topic {i}", 2020, i) for i in range(10)]
+    report = GapAnalyzer(papers).analyze()
+    scores = [
+        report.temporal["score"],
+        report.whitespace["score"],
+        report.stagnation["score"],
+        report.open_questions["score"],
+    ]
+    expected = round(
+        scores[0] * THRESHOLDS.weight_temporal
+        + scores[1] * THRESHOLDS.weight_whitespace
+        + scores[2] * THRESHOLDS.weight_stagnation
+        + scores[3] * THRESHOLDS.weight_open
+    )
+    assert report.score == expected
 
 
 def test_temporal_density_detects_cooling():

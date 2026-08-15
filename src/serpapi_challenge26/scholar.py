@@ -10,6 +10,7 @@ _VENUE_STRIP = " …·,;:"
 _YEAR_START = 1900
 
 _PARTICLES = frozenset({"da", "de", "do", "das", "dos", "e", "del", "van", "von"})
+_PAGE_SIZE = 20
 
 
 @dataclass
@@ -49,6 +50,26 @@ class Scholar:
         if start:
             params["start"] = start
         return self.client.search(params)
+
+    def search_all(self, q: str, *, max_results: int = 20, hl: str = "en") -> list[Paper]:
+        papers: list[Paper] = []
+        start = 0
+        while len(papers) < max_results:
+            page = self.search(q, num=_PAGE_SIZE, start=start, hl=hl)
+            batch = self.parse(page)
+            if not batch:
+                break
+            papers.extend(batch)
+            start += _PAGE_SIZE
+            if not self._has_next(page):
+                break
+        return papers[:max_results]
+
+    @staticmethod
+    def _has_next(results) -> bool:
+        serpapi_next = (results.get("serpapi_pagination") or {}).get("next")
+        scholar_next = (results.get("pagination") or {}).get("next")
+        return bool(serpapi_next or scholar_next)
 
     @staticmethod
     def parse(results) -> list[Paper]:
