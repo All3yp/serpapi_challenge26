@@ -34,10 +34,8 @@ class Thresholds:
     hot_ratio: float = 0.6
     top3_concentration: float = 0.6
     underexplored_max_papers: int = 2
-    underexplored_limit: int = 10
-    hot_limit: int = 5
-    top_papers_limit: int = 5
-    direction_terms_limit: int = 6
+    hot_limit: int = 10
+    top_for_metrics: int = 5
     max_score: int = 90
 
     score_cooling: int = 85
@@ -153,32 +151,35 @@ class GapAnalyzer:
                 "avg_cites": round(sum(cites) / len(cites), 1),
             })
 
-        stats.sort(key=lambda stat: (stat["papers"], stat["avg_cites"]))
-        underexplored = [
-            stat for stat in stats if stat["papers"] <= THRESHOLDS.underexplored_max_papers
-        ][:THRESHOLDS.underexplored_limit]
+        underexplored = sorted(
+            [stat for stat in stats if stat["papers"] <= THRESHOLDS.underexplored_max_papers],
+            key=lambda stat: (stat["papers"], stat["avg_cites"]),
+        )
         hot = sorted(stats, key=lambda stat: (-stat["papers"], -stat["avg_cites"]))[:THRESHOLDS.hot_limit]
 
-        score = min(
-            THRESHOLDS.max_score,
-            THRESHOLDS.score_whitespace_base + len(underexplored) * THRESHOLDS.score_whitespace_step,
-        )
-        if not underexplored:
-            score = THRESHOLDS.score_whitespace_base
+        score = THRESHOLDS.score_whitespace_base
+        if underexplored:
+            score = min(
+                THRESHOLDS.max_score,
+                THRESHOLDS.score_whitespace_base + len(underexplored) * THRESHOLDS.score_whitespace_step,
+            )
 
         return {"score": score, "underexplored_terms": underexplored, "hot_terms": hot}
 
     def citation_stagnation(self) -> dict:
-        cited = [paper for paper in self.papers if paper.cited_by > 0]
+        cited = sorted(
+            [paper for paper in self.papers if paper.cited_by > 0],
+            key=lambda paper: -paper.cited_by,
+        )
         if not cited:
             return {"score": THRESHOLDS.score_neutral, "note": "no_citations", "top_papers": []}
 
-        top = sorted(cited, key=lambda paper: -paper.cited_by)[:THRESHOLDS.top_papers_limit]
+        top = cited[:THRESHOLDS.top_for_metrics]
         top_years = [paper.year for paper in top if paper.year]
         avg_year = sum(top_years) / len(top_years) if top_years else None
 
         total_cites = sum(paper.cited_by for paper in self.papers)
-        top3_cites = sum(paper.cited_by for paper in top[:3])
+        top3_cites = sum(paper.cited_by for paper in cited[:3])
         top3_share = top3_cites / total_cites if total_cites else 0
 
         stagnant = avg_year is not None and avg_year <= CURRENT_YEAR - THRESHOLDS.stagnant_years
@@ -198,7 +199,7 @@ class GapAnalyzer:
             "note": note,
             "top_papers": [
                 {"title": paper.title, "cited_by": paper.cited_by, "year": paper.year}
-                for paper in top
+                for paper in cited
             ],
         }
 
@@ -225,9 +226,7 @@ class GapAnalyzer:
         directions: list[dict] = []
 
         if whitespace["underexplored_terms"]:
-            terms = ", ".join(
-                item["term"] for item in whitespace["underexplored_terms"][:THRESHOLDS.direction_terms_limit]
-            )
+            terms = ", ".join(item["term"] for item in whitespace["underexplored_terms"])
             directions.append({"id": "underexplored", "terms": terms})
 
         if stagnation["note"].startswith("stagnant"):

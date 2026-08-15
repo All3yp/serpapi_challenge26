@@ -117,3 +117,15 @@ msgstr "Modo online"
 
 msgid "No API key"
 msgstr "Sem chave"
+
+msgid "Temporal"
+msgstr "Temporal"
+
+msgid "Whitespace"
+msgstr "Whitespace"
+
+msgid "Stagnation"
+msgstr "Estagnação"
+
+msgid "Open"
+msgstr "Abertas"

@@ -79,6 +79,7 @@ h1, h2, h3 {
 }
 .hero-score .unit { font-size: 1.25rem; color: var(--muted); font-weight: 400; }
 .hero-note { color: var(--accent); font-size: 1.05rem; margin-top: 0.4rem; }
+.hero-subs { margin-top: 1rem; }
 .badge {
   display: inline-block;
   padding: 0.15rem 0.6rem;
@@ -122,13 +123,20 @@ def _direction_message(direction: dict) -> str:
     return _(message)
 
 
-def _render_hero(score: int) -> None:
+def _render_hero(report) -> None:
+    sub = (
+        f'<span class="badge">{_("Temporal")} {report.temporal["score"]}</span>'
+        f'<span class="badge">{_("Whitespace")} {report.whitespace["score"]}</span>'
+        f'<span class="badge">{_("Stagnation")} {report.stagnation["score"]}</span>'
+        f'<span class="badge">{_("Open")} {report.open_questions["score"]}</span>'
+    )
     st.markdown(
         f"""
         <div class="hero">
           <div class="hero-label">{_("Gap opportunity score")}</div>
-          <div class="hero-score">{score}<span class="unit">/100</span></div>
-          <div class="hero-note">{_score_label(score)}</div>
+          <div class="hero-score">{report.score}<span class="unit">/100</span></div>
+          <div class="hero-note">{_score_label(report.score)}</div>
+          <div class="hero-subs">{sub}</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -191,7 +199,7 @@ def _render_reading_list(papers, style: str) -> None:
 
 
 def _render_report(report, papers, style: str) -> None:
-    _render_hero(report.score)
+    _render_hero(report)
 
     directions, temporal, whitespace, stagnation, open_questions, reading = st.tabs([
         _("Directions"),
@@ -266,13 +274,14 @@ def main() -> None:
             st.error(str(exc))
             return
 
-    papers = Scholar.filter_papers(papers, year_low=yl, year_high=yh, limit=num)
+    papers = Scholar.filter_papers(papers, year_low=yl, year_high=yh)
     if not papers:
         st.warning(_("No results found."))
         return
 
     report = GapAnalyzer(papers).analyze()
-    _render_report(report, papers, style)
+    display_papers = papers[:num]
+    _render_report(report, display_papers, style)
 
 
 if __name__ == "__main__":
