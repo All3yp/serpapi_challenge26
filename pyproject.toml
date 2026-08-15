@@ -17,6 +17,7 @@ gap-finder = "serpapi_challenge26:main"
 
 [dependency-groups]
 dev = [
+    "babel>=2.18.0",
     "pytest>=8.0",
     "pytest-cov>=7.1.0",
 ]

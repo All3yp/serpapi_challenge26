@@ -5,7 +5,7 @@ from __future__ import annotations
 from .caching import CacheMiss, CachingClient
 from .config import get_api_key, get_mode
 from .gap import GapAnalyzer
-from .i18n import _, detect_lang, format_decimal, format_int, format_percent, set_language
+from .i18n import _, detect_lang, format_decimal, format_int, format_percent, ngettext, set_language
 from .scholar import (
     CURRENT_YEAR,
     Paper,
@@ -27,6 +27,7 @@ __all__ = [
     "get_mode",
     "GapAnalyzer",
     "_",
+    "ngettext",
     "detect_lang",
     "format_decimal",
     "format_int",

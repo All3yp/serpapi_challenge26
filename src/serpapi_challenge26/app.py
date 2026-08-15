@@ -18,6 +18,7 @@ from serpapi_challenge26 import (
     format_percent,
     get_api_key,
     get_mode,
+    ngettext,
     set_language,
 )
 
@@ -25,9 +26,11 @@ _DIRECTION_TEXTS = {
     "underexplored": "Underexplored subtopics (few papers, low citations): %(terms)s.",
     "stagnant": "Citations are still concentrated on older work — a recent result with no strong follow-up is a candidate gap.",
     "cooling": "Low publication activity in the last 3 years: verify whether the field declined or a space opened.",
-    "open_questions": "%(count)s paper(s) explicitly declare open questions / future work.",
     "saturated": "Field looks saturated and recent — consider a narrower niche or a cross-domain angle.",
 }
+
+_OPEN_DIRECTION_SINGULAR = "%(n)s paper explicitly declares open questions / future work: %(titles)s."
+_OPEN_DIRECTION_PLURAL = "%(n)s papers explicitly declare open questions / future work: %(titles)s."
 
 _WIDE_OPEN = 70
 _SOME_GAPS = 45
@@ -122,12 +125,21 @@ def _badge(text: str, accent: bool = False) -> str:
 
 
 def _direction_message(direction: dict) -> str:
-    message = _DIRECTION_TEXTS[direction["id"]]
+    direction_id = direction["id"]
+    if direction_id == "open_questions":
+        count = direction["count"]
+        titles = ", ".join(direction.get("titles", [])) or "—"
+        template = ngettext(
+            _OPEN_DIRECTION_SINGULAR,
+            _OPEN_DIRECTION_PLURAL,
+            count,
+        )
+        return template % {"n": count, "titles": titles}
+
+    message = _(_DIRECTION_TEXTS[direction_id])
     if "terms" in direction:
         message = message % {"terms": direction["terms"]}
-    if "count" in direction:
-        message = message % {"count": direction["count"]}
-    return _(message)
+    return message
 
 
 def _render_hero(report) -> None:
@@ -166,9 +178,11 @@ def _render_whitespace(whitespace: dict) -> None:
     if whitespace["underexplored_terms"]:
         st.caption(_("Underexplored terms"))
         for item in whitespace["underexplored_terms"]:
+            papers = item["papers"]
+            cites = item["avg_cites"]
             st.write(
-                f"- `{item['term']}` — {item['papers']} {_('papers')}, "
-                f"~{format_decimal(item['avg_cites'])} {_('citations')}"
+                f"- `{item['term']}` — {papers} {ngettext('paper', 'papers', papers)}, "
+                f"~{format_decimal(cites)} {ngettext('citation', 'citations', int(cites))}"
             )
     else:
         st.write(_("No results found."))
@@ -186,13 +200,16 @@ def _render_stagnation(stagnation: dict) -> None:
     if stagnation["top_papers"]:
         st.caption(_("Most-cited papers"))
         for paper in stagnation["top_papers"]:
-            st.write(f"- {format_int(paper['cited_by'])} {_('citations')} — {paper['title']}")
+            cited = int(paper["cited_by"])
+            st.write(f"- {format_int(cited)} {ngettext('citation', 'citations', cited)} — {paper['title']}")
 
 
 def _render_open_questions(open_questions: dict) -> None:
     st.write(f"**{open_questions['count']}**")
     for paper in open_questions["papers"]:
-        st.write(f"- {paper['title']}")
+        st.write(f"- **{paper['title']}** ({paper.get('year') or 's.d.'})")
+        for quote in paper.get("quotes", []):
+            st.markdown(f"> _{quote}_")
 
 
 def _render_reading_list(papers, style: str) -> None:

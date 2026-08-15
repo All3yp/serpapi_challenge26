@@ -2,18 +2,24 @@
 
 from __future__ import annotations
 
+import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 
 from .scholar import CURRENT_YEAR, Paper
 
 _OPEN_MARKERS = (
-    "future work", "further research", "remains open", "little is known",
-    "open problem", "open question", "not yet", "still unclear",
-    "remains unclear", "poorly understood", "needs further", "lacks",
-    "trabalhos futuros", "pesquisas futuras", "pouco se sabe",
-    "questão em aberto", "problema em aberto", "ainda não",
-    "permanece em aberto", "pouco explorado", "lacuna", "carece de",
+    "future work", "further research", "further investigation", "further study",
+    "future research", "future directions", "more research", "remains open",
+    "little is known", "little attention", "open problem", "open question",
+    "open challenge", "research gap", "not yet", "still unclear",
+    "remains unclear", "remains to be", "has not been", "poorly understood",
+    "needs further", "lacks", "unexplored", "underexplored", "understudied",
+    "trabalhos futuros", "pesquisas futuras", "pesquisas adicionais",
+    "direções futuras", "investigação futura", "pouco se sabe", "pouca atenção",
+    "pouco estudado", "questão em aberto", "problema em aberto", "ainda não",
+    "permanece em aberto", "pouco explorado", "lacuna", "lacuna de pesquisa",
+    "carece de",
 )
 
 _STOPWORDS = frozenset(
@@ -24,6 +30,8 @@ _STOPWORDS = frozenset(
 
 _PUNCTUATION = ".,;:()[]{}\"'!?—-–"
 _MIN_TERM_LENGTH = 3
+_SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
+_SENTENCE_MAX_WORDS = 60
 
 
 @dataclass(frozen=True)
@@ -47,9 +55,13 @@ class Thresholds:
     score_neutral: int = 50
     score_whitespace_base: int = 40
     score_whitespace_step: int = 5
-    score_open_base: int = 30
-    score_open_step: int = 15
-    score_open_none: int = 25
+
+    # Explicit tiers for the open-questions signal.
+    open_many_threshold: int = 3
+    open_tier_many: int = 100
+    open_tier_some: int = 75
+    open_tier_one: int = 45
+    open_tier_none: int = 25
 
     # Weights for the weighted average of the four signal scores.
     weight_temporal: float = 0.35
@@ -214,18 +226,59 @@ class GapAnalyzer:
             ],
         }
 
-    def open_questions(self) -> dict:
-        found = []
-        for paper in self.papers:
-            text = f"{paper.title} {paper.snippet}".lower()
-            markers = [marker for marker in _OPEN_MARKERS if marker in text]
-            if markers:
-                found.append({"title": paper.title, "markers": markers, "year": paper.year})
+    @staticmethod
+    def _open_sentences(text: str) -> list[tuple[str, str]]:
+        """Return ``(marker, sentence)`` for each sentence declaring an open gap.
 
-        score = THRESHOLDS.score_open_none
-        if found:
-            score = min(THRESHOLDS.max_score, THRESHOLDS.score_open_base + len(found) * THRESHOLDS.score_open_step)
-        return {"score": score, "count": len(found), "papers": found}
+        A marker is a canonical, translatable key; the sentence is the verbatim
+        excerpt (from title or snippet) so the user can verify the claim.
+        """
+        sentences = _SENTENCE_END.split(text)
+        spans: list[tuple[str, str]] = []
+        for sentence in sentences:
+            words = sentence.split()
+            if not words or len(words) > _SENTENCE_MAX_WORDS:
+                continue
+            sentence_lower = sentence.lower()
+            for marker in _OPEN_MARKERS:
+                if marker in sentence_lower:
+                    spans.append((marker, sentence.strip()))
+                    break
+        return spans
+
+    def open_questions(self) -> dict:
+        found: list[dict] = []
+        total_spans = 0
+        for paper in self.papers:
+            title_spans = self._open_sentences(paper.title)
+            snippet_spans = self._open_sentences(paper.snippet)
+            spans = title_spans + snippet_spans
+            if not spans:
+                continue
+            total_spans += len(spans)
+            markers = list(dict.fromkeys(marker for marker, _ in spans))
+            found.append({
+                "title": paper.title,
+                "markers": markers,
+                "year": paper.year,
+                "quotes": [quote for _, quote in spans],
+            })
+
+        if len(found) >= THRESHOLDS.open_many_threshold:
+            score = THRESHOLDS.open_tier_many
+        elif len(found) == 1 and total_spans == 1:
+            score = THRESHOLDS.open_tier_one
+        elif found:
+            score = THRESHOLDS.open_tier_some
+        else:
+            score = THRESHOLDS.open_tier_none
+
+        return {
+            "score": score,
+            "count": len(found),
+            "papers": found,
+            "declarations": total_spans,
+        }
 
     @staticmethod
     def _directions(signals: dict) -> list[dict]:
@@ -247,7 +300,11 @@ class GapAnalyzer:
             directions.append({"id": "cooling"})
 
         if open_questions["count"]:
-            directions.append({"id": "open_questions", "count": open_questions["count"]})
+            directions.append({
+                "id": "open_questions",
+                "count": open_questions["count"],
+                "titles": [paper["title"] for paper in open_questions["papers"]],
+            })
 
         if not directions:
             directions.append({"id": "saturated"})

@@ -90,3 +90,15 @@ def test_set_language_pt_missing_catalog_falls_back_to_null(monkeypatch):
     monkeypatch.setattr(gettext, "translation", _boom)
     i18n.set_language("pt")
     assert i18n._("Research topic") == "Research topic"
+
+
+def test_ngettext_pt_plural():
+    i18n.set_language("pt")
+    assert i18n.ngettext("paper", "papers", 1) == "paper"
+    assert i18n.ngettext("paper", "papers", 3) == "papers"
+
+
+def test_ngettext_en_singular_plural():
+    i18n.set_language("en")
+    assert i18n.ngettext("paper", "papers", 1) == "paper"
+    assert i18n.ngettext("paper", "papers", 3) == "papers"

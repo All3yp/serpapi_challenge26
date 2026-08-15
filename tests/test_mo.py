@@ -1,31 +1,33 @@
+"""Tests for the Babel-compiled message catalog (plurals + compile wrapper)."""
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_ROOT / "scripts"))
 
-from compile_messages import compile_mo, parse_po  # noqa: E402
+
+def test_compiled_catalog_has_pt_plurals():
+    import gettext
+
+    catalog = gettext.translation("messages", str(_ROOT / "locale"), languages=["pt"])
+    assert catalog.ngettext("paper", "papers", 1) == "paper"
+    assert catalog.ngettext("paper", "papers", 5) == "papers"
+    assert catalog.ngettext("citation", "citations", 1) == "citação"
+    assert catalog.ngettext("citation", "citations", 5) == "citações"
 
 
-def test_mo_roundtrip_is_parseable_by_gettext(tmp_path):
-    po_text = '''msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\\n"
+def test_compile_script_reproduces_mo(tmp_path):
+    import shutil
 
-msgid "hello"
-msgstr "olá"
+    from compile_messages import main
 
-msgid "world"
-msgstr "mundo"
-'''
-    entries = parse_po(po_text)
-    assert entries[0][0] == ""
+    # Copy the catalog into an isolated temp dir so the test never writes to repo.
+    tmp_locale = tmp_path / "locale"
+    shutil.copytree(_ROOT / "locale", tmp_locale)
 
-    mo_path = tmp_path / "messages.mo"
-    mo_path.write_bytes(compile_mo(entries))
+    main(tmp_locale)
 
     import gettext
 
-    with mo_path.open("rb") as fp:
-        catalog = gettext.GNUTranslations(fp)
-    assert catalog.gettext("hello") == "olá"
-    assert catalog.gettext("world") == "mundo"
+    catalog = gettext.translation("messages", str(tmp_locale), languages=["pt"])
+    assert catalog.ngettext("paper", "papers", 2) == "papers"

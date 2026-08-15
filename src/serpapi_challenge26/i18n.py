@@ -54,6 +54,10 @@ def translate(message: str) -> str:
     return _translator.gettext(message)
 
 
+def ngettext(singular: str, plural: str, n: int) -> str:
+    return _translator.ngettext(singular, plural, n)
+
+
 _ = translate
 
 

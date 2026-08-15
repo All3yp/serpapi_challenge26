@@ -139,7 +139,7 @@ def test_badge_markup(app):
 def test_direction_message_substitution(app):
     module, _ = app
     assert module._direction_message({"id": "underexplored", "terms": "foo"}).endswith("foo.")
-    assert "3 paper(s)" in module._direction_message({"id": "open_questions", "count": 3})
+    assert "3 papers" in module._direction_message({"id": "open_questions", "count": 3})
     assert "saturated" in module._direction_message({"id": "saturated"})
 
 

@@ -53,6 +53,38 @@ def test_open_questions_detects_marker():
     assert report.open_questions["count"] == 1
 
 
+def test_open_questions_captures_verbatim_quote():
+    papers = [_paper("A study", 2020, snippet="Little is known about this. Future work should verify.")]
+    report = GapAnalyzer(papers).analyze()
+    quotes = report.open_questions["papers"][0]["quotes"]
+    assert any("little is known" in quote.lower() for quote in quotes)
+    assert any("future work" in quote.lower() for quote in quotes)
+
+
+def test_open_questions_single_declaration_scores_45():
+    papers = [_paper("A study", 2020, snippet="Future work is still needed.")]
+    report = GapAnalyzer(papers).analyze()
+    assert report.open_questions["score"] == 45
+
+
+def test_open_questions_multiple_declarations_scores_many():
+    # 3 distinct markers spread across 3 papers -> "many" tier.
+    papers = [
+        _paper("A", 2020, snippet="Future work is needed."),
+        _paper("B", 2021, snippet="This remains open."),
+        _paper("C", 2022, snippet="Little is known here."),
+    ]
+    report = GapAnalyzer(papers).analyze()
+    assert report.open_questions["score"] == 100
+
+
+def test_directions_include_open_question_titles():
+    papers = [_paper("A study", 2015, snippet="future work is still needed")]
+    report = GapAnalyzer(papers).analyze()
+    open_dir = next(d for d in report.directions if d["id"] == "open_questions")
+    assert open_dir["titles"] == ["A study"]
+
+
 def test_citation_stagnation_without_citations():
     papers = [_paper("x", 2020)]
     report = GapAnalyzer(papers).analyze()
