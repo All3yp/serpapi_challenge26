@@ -4,11 +4,22 @@ from __future__ import annotations
 
 import streamlit as st
 
-from serpapi_challenge26.caching import CachingClient, CacheMiss
-from serpapi_challenge26.config import get_api_key, get_mode
-from serpapi_challenge26.gap import GapAnalyzer
-from serpapi_challenge26.i18n import _, detect_lang, format_decimal, format_int, format_percent, set_language
-from serpapi_challenge26.scholar import CURRENT_YEAR, Scholar, format_citation
+from serpapi_challenge26 import (
+    CURRENT_YEAR,
+    CachingClient,
+    CacheMiss,
+    GapAnalyzer,
+    Scholar,
+    _,
+    detect_lang,
+    format_citation,
+    format_decimal,
+    format_int,
+    format_percent,
+    get_api_key,
+    get_mode,
+    set_language,
+)
 
 _DIRECTION_TEXTS = {
     "underexplored": "Underexplored subtopics (few papers, low citations): %(terms)s.",

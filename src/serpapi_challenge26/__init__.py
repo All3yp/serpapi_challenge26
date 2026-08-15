@@ -2,9 +2,31 @@
 
 from __future__ import annotations
 
-__all__ = ["app", "caching", "config", "gap", "scholar"]
+from .caching import CacheMiss, CachingClient
+from .config import get_api_key, get_mode
+from .gap import GapAnalyzer
+from .i18n import _, detect_lang, format_decimal, format_int, format_percent, set_language
+from .scholar import CURRENT_YEAR, Paper, Scholar, format_citation
 
 __version__ = "0.1.0"
+
+__all__ = [
+    "CachingClient",
+    "CacheMiss",
+    "get_api_key",
+    "get_mode",
+    "GapAnalyzer",
+    "_",
+    "detect_lang",
+    "format_decimal",
+    "format_int",
+    "format_percent",
+    "set_language",
+    "CURRENT_YEAR",
+    "Paper",
+    "Scholar",
+    "format_citation",
+]
 
 
 def main() -> None:
