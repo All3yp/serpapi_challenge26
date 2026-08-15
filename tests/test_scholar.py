@@ -31,17 +31,32 @@ def test_extract_venue_strips_truncation_and_trailing_year():
 
 def test_format_abnt_multiple_authors():
     paper = Paper(title="A title", authors=["Ana Souza", "Bia Lima"], venue="Revista X", year=2021)
-    assert format_abnt(paper) == "SOUZA, A.; LIMA, B.. A title. Revista X, 2021."
+    assert format_abnt(paper) == "SOUZA, A.; LIMA, B. A title. Revista X, 2021."
+
+
+def test_format_abnt_no_venue_no_double_dot():
+    paper = Paper(title="A title", authors=["Ana Souza"], year=2021)
+    assert format_abnt(paper) == "SOUZA, A. A title. 2021."
+
+
+def test_format_abnt_no_authors():
+    paper = Paper(title="A title", year=2021)
+    assert format_abnt(paper).startswith("A title")
 
 
 def test_format_apa_multiple_authors():
     paper = Paper(title="A title", authors=["Ana Souza", "Bia Lima", "Caio Reis"], year=2020)
-    assert format_apa(paper) == "Souza, A., Lima, B., & Reis, C. (2020). A title.."
+    assert format_apa(paper) == "Souza, A., Lima, B., & Reis, C. (2020). A title."
 
 
 def test_format_apa_without_authors_or_year():
     paper = Paper(title="A title")
-    assert format_apa(paper) == "(s.a.) (s.d.). A title.."
+    assert format_apa(paper) == "(s.a.) (s.d.). A title."
+
+
+def test_particles_are_not_initials():
+    paper = Paper(title="A title", authors=["João Carlos da Silva"], year=2020)
+    assert format_apa(paper) == "Silva, J. C. (2020). A title."
 
 
 def test_format_citation_dispatches_by_style():

@@ -1,3 +1,5 @@
+import pytest
+
 from serpapi_challenge26.caching import CacheMiss, CachedResponse, CachingClient
 
 
@@ -21,3 +23,8 @@ def test_save_and_load_roundtrip(tmp_path):
     path = tmp_path / "x.json"
     CachingClient._save(path, CachedResponse({"a": 1}))
     assert CachingClient._load(path).json() == {"a": 1}
+
+
+def test_invalid_mode_raises(tmp_path):
+    with pytest.raises(ValueError):
+        CachingClient(api_key=None, mode="foo", cache_dir=tmp_path)

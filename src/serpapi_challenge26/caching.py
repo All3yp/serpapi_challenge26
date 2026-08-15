@@ -45,6 +45,8 @@ class CachingClient(serpapi.Client):
         cache_dir: str | Path = "fixtures",
         mode: str = "replay",
     ) -> None:
+        if mode not in ("record", "replay", "online"):
+            raise ValueError(f"invalid cache mode: {mode!r}")
         super().__init__(api_key=api_key, timeout=timeout)
         self.cache_dir = Path(cache_dir)
         self.mode = mode

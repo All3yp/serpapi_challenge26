@@ -241,7 +241,7 @@ def main() -> None:
     mode = get_mode()
 
     with st.sidebar:
-        st.radio("Idioma / Language", ["pt", "en"], key="lang", horizontal=True)
+        st.radio("Idioma / Language", ["pt", "en"], index=1 if _lang() == "en" else 0, key="lang", horizontal=True)
         st.divider()
         query = st.text_input(_("Research topic"), value="explainable artificial intelligence")
         num = st.slider(_("Number of papers"), 5, 50, 20, step=5)

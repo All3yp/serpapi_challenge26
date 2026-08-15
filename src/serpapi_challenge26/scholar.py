@@ -9,6 +9,8 @@ CURRENT_YEAR = 2026
 _VENUE_STRIP = " …·,;:"
 _YEAR_START = 1900
 
+_PARTICLES = frozenset({"da", "de", "do", "das", "dos", "e", "del", "van", "von"})
+
 
 @dataclass
 class Paper:
@@ -138,7 +140,9 @@ def _author_surname(name: str) -> str:
 
 
 def _author_initials(name: str) -> str:
-    return " ".join(f"{token[0]}." for token in name.split()[:-1])
+    tokens = name.split()[:-1]
+    initials = [f"{token[0]}." for token in tokens if token and token.lower() not in _PARTICLES]
+    return " ".join(initials)
 
 
 def format_abnt(paper: Paper) -> str:
@@ -147,7 +151,8 @@ def format_abnt(paper: Paper) -> str:
     )
     year = paper.year or "s.d."
     venue = f" {paper.venue}," if paper.venue else ""
-    return f"{authors}. {paper.title}.{venue} {year}."
+    prefix = f"{authors} " if authors else ""
+    return f"{prefix}{paper.title}.{venue} {year}."
 
 
 def _format_author_apa(name: str) -> str:
@@ -164,7 +169,7 @@ def format_apa(paper: Paper) -> str:
         authors += f", & {_format_author_apa(paper.authors[-1])}"
 
     year = paper.year or "s.d."
-    venue = f" {paper.venue}." if paper.venue else "."
+    venue = f" {paper.venue}." if paper.venue else ""
     return f"{authors} ({year}). {paper.title}.{venue}"
 
 
