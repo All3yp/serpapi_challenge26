@@ -7,11 +7,15 @@ import streamlit as st
 from .caching import CachingClient, CacheMiss
 from .config import get_api_key, get_mode
 from .gap import GapAnalyzer
+from .i18n import detect_lang, format_decimal, format_int, format_percent
 from .scholar import CURRENT_YEAR, Scholar, format_citation
 
 
 def _lang() -> str:
-    return "pt" if st.session_state.get("lang", "pt") == "pt" else "en"
+    override = st.session_state.get("lang")
+    if override:
+        return override
+    return detect_lang()
 
 
 T = {
@@ -91,7 +95,7 @@ def _render_report(report, papers, style: str) -> None:
         st.subheader(_t("temporal"))
         temp = report.temporal
         if temp["recent_ratio"] is not None:
-            st.write(f"{_t('recent_ratio')}: **{temp['recent_ratio']:.0%}**")
+            st.write(f"{_t('recent_ratio')}: **{format_percent(temp['recent_ratio'])}**")
         if temp["histogram"]:
             st.bar_chart(temp["histogram"])
 
@@ -99,7 +103,10 @@ def _render_report(report, papers, style: str) -> None:
         if report.whitespace["underexplored_terms"]:
             st.caption(_t("underexplored"))
             for item in report.whitespace["underexplored_terms"]:
-                st.write(f"- `{item['term']}` — {item['papers']} {_t('papers')}, ~{item['avg_cites']} {_t('cites')}")
+                st.write(
+                    f"- `{item['term']}` — {item['papers']} {_t('papers')}, "
+                    f"~{format_decimal(item['avg_cites'])} {_t('cites')}"
+                )
         else:
             st.write(_t("no_results"))
         if report.whitespace["hot_terms"]:
@@ -110,11 +117,14 @@ def _render_report(report, papers, style: str) -> None:
         st.subheader(_t("stagnation"))
         stag = report.stagnation
         if stag["avg_top_year"]:
-            st.write(f"Top-5 média {_t('year')}: **{stag['avg_top_year']}** · top-3 share: **{stag['top3_share']:.0%}**")
+            st.write(
+                f"Top-5 {_t('year')}: **{format_decimal(stag['avg_top_year'])}** · "
+                f"top-3 share: **{format_percent(stag['top3_share'])}**"
+            )
         if stag["top_papers"]:
             st.caption(_t("top_papers"))
             for p in stag["top_papers"]:
-                st.write(f"- {p['cited_by']} {_t('cites')} — {p['title']}")
+                st.write(f"- {format_int(p['cited_by'])} {_t('cites')} — {p['title']}")
 
         st.subheader(_t("open"))
         oq = report.open_questions
@@ -151,7 +161,8 @@ def main() -> None:
     query = st.text_input(_t("query"), value="explainable artificial intelligence")
     num = st.slider(_t("num"), 5, 50, 20, step=5)
     yl, yh = st.slider(_t("years"), 2000, CURRENT_YEAR, (2000, CURRENT_YEAR), step=1)
-    style = st.selectbox(_t("style"), ["APA", "ABNT"])
+    default_style = "ABNT" if _lang() == "pt" else "APA"
+    style = st.selectbox(_t("style"), ["APA", "ABNT"], index=0 if default_style == "APA" else 1)
 
     if st.button(_t("run"), type="primary"):
         client = CachingClient(api_key=api_key, mode=mode)
