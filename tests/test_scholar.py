@@ -1,5 +1,6 @@
 from serpapi_challenge26.scholar import (
     Paper,
+    Scholar,
     _scan_years,
     extract_year,
     extract_venue,
@@ -47,3 +48,20 @@ def test_format_citation_dispatches_by_style():
     paper = Paper(title="A title", authors=["Ana Souza"], year=2020)
     assert format_citation(paper, "abnt").startswith("SOUZA")
     assert format_citation(paper, "APA").startswith("Souza")
+
+
+def test_filter_papers_by_year_and_limit():
+    papers = [
+        Paper(title="a", year=2018),
+        Paper(title="b", year=2021),
+        Paper(title="c", year=None),
+        Paper(title="d", year=2024),
+    ]
+    filtered = Scholar.filter_papers(papers, year_low=2020, year_high=2025, limit=10)
+    assert [paper.title for paper in filtered] == ["b", "c", "d"]
+
+
+def test_filter_papers_keeps_unknown_years():
+    papers = [Paper(title="a", year=2010), Paper(title="b", year=None)]
+    filtered = Scholar.filter_papers(papers, year_low=2020, year_high=2025)
+    assert [paper.title for paper in filtered] == ["b"]

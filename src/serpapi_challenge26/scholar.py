@@ -53,6 +53,23 @@ class Scholar:
         return [Scholar._parse_item(item) for item in results.get("organic_results", [])]
 
     @staticmethod
+    def filter_papers(
+        papers: list[Paper],
+        *,
+        year_low: int | None = None,
+        year_high: int | None = None,
+        limit: int | None = None,
+    ) -> list[Paper]:
+        filtered = papers
+        if year_low is not None:
+            filtered = [paper for paper in filtered if paper.year is None or paper.year >= year_low]
+        if year_high is not None:
+            filtered = [paper for paper in filtered if paper.year is None or paper.year <= year_high]
+        if limit is not None:
+            filtered = filtered[:limit]
+        return filtered
+
+    @staticmethod
     def _parse_item(item: dict) -> Paper:
         info = item.get("publication_info") or {}
         summary = info.get("summary") or ""

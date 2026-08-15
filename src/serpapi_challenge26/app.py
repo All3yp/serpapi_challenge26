@@ -31,6 +31,7 @@ _DIRECTION_TEXTS = {
 
 _WIDE_OPEN = 70
 _SOME_GAPS = 45
+_MAX_PAPERS = 50
 
 _CSS = """
 <style>
@@ -259,12 +260,13 @@ def main() -> None:
 
     with st.spinner(_("Searching and analyzing…")):
         try:
-            results = scholar.search(query, num=num, year_low=yl, year_high=yh)
+            results = scholar.search(query, num=_MAX_PAPERS, hl="en")
             papers = Scholar.parse(results)
         except CacheMiss as exc:
             st.error(str(exc))
             return
 
+    papers = Scholar.filter_papers(papers, year_low=yl, year_high=yh, limit=num)
     if not papers:
         st.warning(_("No results found."))
         return
