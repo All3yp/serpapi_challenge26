@@ -18,3 +18,4 @@ wheels/
 SerpApiChallenge.md
 .pytest_cache
 fixtures
+uv.lock
