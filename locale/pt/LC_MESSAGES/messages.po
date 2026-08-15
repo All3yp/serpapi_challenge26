@@ -93,3 +93,27 @@ msgstr "%(count)s trabalho(s) declaram explicitamente questões abertas / trabal
 
 msgid "Field looks saturated and recent — consider a narrower niche or a cross-domain angle."
 msgstr "O campo parece saturado e recente — considere um nicho mais estreito ou um ângulo interdisciplinar."
+
+msgid "Directions"
+msgstr "Direções"
+
+msgid "Open questions"
+msgstr "Questões abertas"
+
+msgid "Wide open"
+msgstr "Campo aberto"
+
+msgid "Some gaps"
+msgstr "Algumas lacunas"
+
+msgid "Crowded"
+msgstr "Saturado"
+
+msgid "Offline mode"
+msgstr "Modo offline"
+
+msgid "Online mode"
+msgstr "Modo online"
+
+msgid "No API key"
+msgstr "Sem chave"
