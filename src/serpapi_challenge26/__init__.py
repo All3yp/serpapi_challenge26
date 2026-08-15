@@ -8,11 +8,11 @@ __version__ = "0.1.0"
 
 
 def main() -> None:
-    """Entry point: launch the Streamlit app."""
+    """Launch the Streamlit app."""
     import os
 
     from streamlit.web import cli as stcli
 
     this_dir = os.path.dirname(os.path.abspath(__file__))
     app_path = os.path.join(this_dir, "app.py")
-    stcli.main(["streamlit", "run", app_path])
+    stcli.main(["run", app_path])

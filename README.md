@@ -48,9 +48,9 @@ cp .env.EXAMPLE .env
 ## Como rodar
 
 ```bash
-uv run streamlit run src/serpapi_challenge26/app.py
+uv run python main.py
 # ou, se instalado em modo editável:
-gap-finder
+uv run gap-finder
 ```
 
 Abra `http://localhost:8501`.
@@ -92,7 +92,7 @@ O app roda **sem chave nenhuma** em `replay` (usa `fixtures/`). Isso também dei
 ```bash
 python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt
-.venv/Scripts/streamlit run src/serpapi_challenge26/app.py
+.venv/Scripts/python main.py
 ```
 
 ## Tecnologias
