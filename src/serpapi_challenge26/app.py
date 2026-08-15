@@ -35,6 +35,13 @@ _OPEN_DIRECTION_PLURAL = "%(n)s papers explicitly declare open questions / futur
 _WIDE_OPEN = 70
 _SOME_GAPS = 45
 
+# Scholar serves 20 results per page; cap the UI slider so the default
+# (20) is one request and the max (100) is five requests.
+_MIN_PAPERS = 5
+_MAX_PAPERS = 100
+_DEFAULT_PAPERS = 20
+_PAPERS_STEP = 5
+
 _MODE_VALUES = ("replay", "online", "record")
 _MODE_LABELS = {
     "replay": "Offline (replay)",
@@ -283,7 +290,13 @@ def main() -> None:
             key="mode",
         )
         query = st.text_input(_("Research topic"), value="explainable artificial intelligence")
-        num = st.slider(_("Number of papers"), 5, 50, 20, step=5)
+        num = st.slider(
+            _("Number of papers"),
+            _MIN_PAPERS,
+            _MAX_PAPERS,
+            _DEFAULT_PAPERS,
+            step=_PAPERS_STEP,
+        )
         yl, yh = st.slider(_("Year window (start–end)"), 2000, CURRENT_YEAR, (2000, CURRENT_YEAR), step=1)
         default_style = "ABNT" if _lang() == "pt" else "APA"
         style = st.selectbox(

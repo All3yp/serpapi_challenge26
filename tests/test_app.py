@@ -123,6 +123,13 @@ class _FakeReport:
 # --- pure helpers -----------------------------------------------------------
 
 
+def test_papers_slider_bounds(app):
+    module, _ = app
+    assert module._MAX_PAPERS == 100
+    assert module._MIN_PAPERS == 5
+    assert module._DEFAULT_PAPERS == 20
+
+
 def test_score_label_thresholds(app):
     module, _ = app
     assert module._score_label(70) == "Wide open"
