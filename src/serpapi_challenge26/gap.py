@@ -36,7 +36,7 @@ class Thresholds:
     underexplored_max_papers: int = 2
     hot_limit: int = 10
     top_for_metrics: int = 5
-    max_score: int = 90
+    max_score: int = 100
 
     score_cooling: int = 85
     score_hot: int = 30

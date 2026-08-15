@@ -17,5 +17,8 @@ wheels/
 .serena
 SerpApiChallenge.md
 .pytest_cache
-fixtures
 uv.lock
+.agents
+*lock.json
+.claude
+.coverage

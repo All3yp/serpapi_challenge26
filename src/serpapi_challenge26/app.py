@@ -267,7 +267,7 @@ def main() -> None:
 
     with st.spinner(_("Searching and analyzing…")):
         try:
-            papers = scholar.search_all(query, max_results=num, hl="en")
+            papers = scholar.search_all(query, max_results=num, hl="en", year_low=yl, year_high=yh)
         except CacheMiss as exc:
             st.error(str(exc))
             return

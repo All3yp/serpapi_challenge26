@@ -16,7 +16,10 @@ dependencies = [
 gap-finder = "serpapi_challenge26:main"
 
 [dependency-groups]
-dev = ["pytest>=8.0"]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=7.1.0",
+]
 
 [build-system]
 requires = ["hatchling"]

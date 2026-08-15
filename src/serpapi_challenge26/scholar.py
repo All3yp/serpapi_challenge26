@@ -11,6 +11,7 @@ _YEAR_START = 1900
 
 _PARTICLES = frozenset({"da", "de", "do", "das", "dos", "e", "del", "van", "von"})
 _PAGE_SIZE = 20
+_MAX_PAGES = 50
 
 
 @dataclass
@@ -51,12 +52,29 @@ class Scholar:
             params["start"] = start
         return self.client.search(params)
 
-    def search_all(self, q: str, *, max_results: int = 20, hl: str = "en") -> list[Paper]:
+    def search_all(
+        self,
+        q: str,
+        *,
+        max_results: int = 20,
+        hl: str = "en",
+        year_low: int | None = None,
+        year_high: int | None = None,
+    ) -> list[Paper]:
         papers: list[Paper] = []
         start = 0
-        while len(papers) < max_results:
-            page = self.search(q, num=_PAGE_SIZE, start=start, hl=hl)
+        pages = 0
+        while len(papers) < max_results and pages < _MAX_PAGES:
+            page = self.search(
+                q,
+                num=_PAGE_SIZE,
+                start=start,
+                hl=hl,
+                year_low=year_low,
+                year_high=year_high,
+            )
             batch = self.parse(page)
+            pages += 1
             if not batch:
                 break
             papers.extend(batch)
@@ -97,7 +115,7 @@ class Scholar:
         info = item.get("publication_info") or {}
         summary = info.get("summary") or ""
         inline = item.get("inline_links") or {}
-        cited = (inline.get("cited_by") or {}).get("total") or 0
+        cited = _coerce_int((inline.get("cited_by") or {}).get("total"))
 
         authors = [a["name"] for a in info.get("authors") or [] if a.get("name")]
 
@@ -108,10 +126,21 @@ class Scholar:
             year=extract_year(summary) or extract_year(item.get("title", "")),
             authors=authors,
             venue=extract_venue(summary),
-            cited_by=int(cited),
+            cited_by=cited,
             link=item.get("link", ""),
             pdf=_first_pdf(item.get("resources") or []),
         )
+
+
+def _coerce_int(value) -> int:
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, (int, float)):
+        return int(value)
+    try:
+        return int(str(value).replace(",", "").strip())
+    except (TypeError, ValueError):
+        return 0
 
 
 def _first_pdf(resources: list[dict]) -> str:

@@ -1,0 +1,1165 @@
+{
+  "search_metadata": {
+    "id": "6a7fbf30a89e028739c59e38",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/s3qq1rJ_1lNTDVL1kOGzog/6a7fbf30a89e028739c59e38.json",
+    "markdown_endpoint": "https://serpapi.com/searches/s3qq1rJ_1lNTDVL1kOGzog/6a7fbf30a89e028739c59e38.md",
+    "created_at": "2026-08-15 01:21:52 UTC",
+    "processed_at": "2026-08-15 01:21:52 UTC",
+    "google_scholar_url": "https://scholar.google.com/scholar?q=explainable+artificial+intelligence&hl=en&num=21",
+    "raw_html_file": "https://serpapi.com/searches/s3qq1rJ_1lNTDVL1kOGzog/6a7fbf30a89e028739c59e38.html",
+    "total_time_taken": 2.57
+  },
+  "search_parameters": {
+    "engine": "google_scholar",
+    "q": "explainable artificial intelligence",
+    "hl": "en",
+    "num": "20"
+  },
+  "search_information": {
+    "organic_results_state": "Results for exact spelling",
+    "total_results": 193000,
+    "time_taken_displayed": 0.22,
+    "query_displayed": "explainable artificial intelligence"
+  },
+  "organic_results": [
+    {
+      "position": 1,
+      "title": "Explainable artificial intelligence: an analytical review",
+      "result_id": "Qb3N9Z9kyZoJ",
+      "link": "https://wires.onlinelibrary.wiley.com/doi/abs/10.1002/widm.1424",
+      "snippet": "… the explainability of artificial intelligence in the context of recent advances in machine learning … the main challenges in terms of explainability building on the recently formulated National …",
+      "publication_info": {
+        "summary": "PP Angelov, EA Soares, R Jiang… - … : Data Mining and …, 2021 - Wiley Online Library",
+        "authors": [
+          {
+            "name": "PP Angelov",
+            "link": "https://scholar.google.com/citations?user=CCW8PwkAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "CCW8PwkAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=CCW8PwkAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "EA Soares",
+            "link": "https://scholar.google.com/citations?user=rhwkrAoAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "rhwkrAoAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=rhwkrAoAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "R Jiang",
+            "link": "https://scholar.google.com/citations?user=NuyoNc4AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "NuyoNc4AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=NuyoNc4AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "wiley.com",
+          "file_format": "PDF",
+          "link": "https://wires.onlinelibrary.wiley.com/doi/pdf/10.1002/widm.1424"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=Qb3N9Z9kyZoJ",
+        "cited_by": {
+          "total": 1355,
+          "link": "https://scholar.google.com/scholar?cites=11153556590346222913&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "11153556590346222913",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=11153556590346222913&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:Qb3N9Z9kyZoJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AQb3N9Z9kyZoJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 11,
+          "link": "https://scholar.google.com/scholar?cluster=11153556590346222913&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "11153556590346222913",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=11153556590346222913&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 2,
+      "title": "Explainable artificial intelligence: a comprehensive review",
+      "result_id": "2ft9dCizSL0J",
+      "link": "https://link.springer.com/article/10.1007/s10462-021-10088-y",
+      "snippet": "… This issue has motivated the introduction of explainable artificial intelligence (XAI), which … i) pre-modeling explainability, (ii) interpretable model, and (iii) post-modeling explainability. We …",
+      "publication_info": {
+        "summary": "D Minh, HX Wang, YF Li, TN Nguyen - Artificial Intelligence Review, 2022 - Springer",
+        "authors": [
+          {
+            "name": "D Minh",
+            "link": "https://scholar.google.com/citations?user=E9hoN9AAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "E9hoN9AAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=E9hoN9AAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "HX Wang",
+            "link": "https://scholar.google.com/citations?user=w5epAMEAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "w5epAMEAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=w5epAMEAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "YF Li",
+            "link": "https://scholar.google.com/citations?user=l3eFjv8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "l3eFjv8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=l3eFjv8AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "TN Nguyen",
+            "link": "https://scholar.google.com/citations?user=j2SYwykAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "j2SYwykAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=j2SYwykAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "apjohndim.com",
+          "file_format": "PDF",
+          "link": "https://apjohndim.com/wp-content/uploads/suggested-papers/Explainable%20AI/Minh%20%282022%29%20Explainable%20artificial%20intelligence%20a%20comprehensive%20review.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=2ft9dCizSL0J",
+        "cited_by": {
+          "total": 1436,
+          "link": "https://scholar.google.com/scholar?cites=13639348457826024409&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "13639348457826024409",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=13639348457826024409&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:2ft9dCizSL0J:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A2ft9dCizSL0J%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 9,
+          "link": "https://scholar.google.com/scholar?cluster=13639348457826024409&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "13639348457826024409",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=13639348457826024409&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 3,
+      "title": "XAI—Explainable artificial intelligence",
+      "result_id": "RBk0l3DtO9sJ",
+      "link": "https://www.science.org/doi/abs/10.1126/scirobotics.aay7120",
+      "snippet": "… 2017-0-01779; A machine learning and statistical inference framework for explainable artificial intelligence). Material within this technical publication is based on the work supported by …",
+      "publication_info": {
+        "summary": "D Gunning, M Stefik, J Choi, T Miller, S Stumpf… - Science robotics, 2019 - science.org",
+        "authors": [
+          {
+            "name": "D Gunning",
+            "link": "https://scholar.google.com/citations?user=niuOiggAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "niuOiggAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=niuOiggAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "M Stefik"
+          },
+          {
+            "name": "J Choi",
+            "link": "https://scholar.google.com/citations?user=RqMLVzUAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "RqMLVzUAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=RqMLVzUAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "T Miller",
+            "link": "https://scholar.google.com/citations?user=7koVt4EAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "7koVt4EAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=7koVt4EAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "S Stumpf",
+            "link": "https://scholar.google.com/citations?user=NESjxsAAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "NESjxsAAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=NESjxsAAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "city.ac.uk",
+          "file_format": "PDF",
+          "link": "https://openaccess.city.ac.uk/id/eprint/23405/8/aay7120_article_nearly%20final.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=RBk0l3DtO9sJ",
+        "cited_by": {
+          "total": 3052,
+          "link": "https://scholar.google.com/scholar?cites=15797481185761040708&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "15797481185761040708",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=15797481185761040708&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:RBk0l3DtO9sJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3ARBk0l3DtO9sJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 13,
+          "link": "https://scholar.google.com/scholar?cluster=15797481185761040708&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "15797481185761040708",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=15797481185761040708&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 4,
+      "title": "Explainable artificial intelligence: A survey",
+      "result_id": "7O4ygCIm7rAJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/8400040/",
+      "snippet": "… In the light of these issues, explainable artificial intelligence (XAI) has become an area of interest in research community. This paper summarizes recent developments in XAI in …",
+      "publication_info": {
+        "summary": "FK Došilović, M Brčić, N Hlupić - 2018 41st International …, 2018 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "FK Došilović",
+            "link": "https://scholar.google.com/citations?user=3Te8pwQAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "3Te8pwQAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=3Te8pwQAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "M Brčić",
+            "link": "https://scholar.google.com/citations?user=rTdMHv8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "rTdMHv8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=rTdMHv8AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "N Hlupić",
+            "link": "https://scholar.google.com/citations?user=nE4V83gAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "nE4V83gAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=nE4V83gAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "researchgate.net",
+          "file_format": "PDF",
+          "link": "https://www.researchgate.net/profile/Mario-Brcic/publication/325398586_Explainable_Artificial_Intelligence_A_Survey/links/5b0bec90a6fdcc8c2534d673/Explainable-Artificial-Intelligence-A-Survey.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=7O4ygCIm7rAJ",
+        "cited_by": {
+          "total": 1724,
+          "link": "https://scholar.google.com/scholar?cites=12749169524754018028&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "12749169524754018028",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=12749169524754018028&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:7O4ygCIm7rAJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A7O4ygCIm7rAJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 9,
+          "link": "https://scholar.google.com/scholar?cluster=12749169524754018028&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "12749169524754018028",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=12749169524754018028&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 5,
+      "title": "Opportunities and challenges in explainable artificial intelligence (xai): A survey",
+      "result_id": "JMFUJCFILOsJ",
+      "link": "https://arxiv.org/abs/2006.11371",
+      "snippet": "… In this survey, we present a comprehensive overview of explainable and interpretable … as explainable artificial intelligence, XAI, explainable machine learning, explainable deep …",
+      "publication_info": {
+        "summary": "A Das, P Rad - arXiv preprint arXiv:2006.11371, 2020 - arxiv.org",
+        "authors": [
+          {
+            "name": "A Das",
+            "link": "https://scholar.google.com/citations?user=S-NrxxMAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "S-NrxxMAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=S-NrxxMAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "P Rad",
+            "link": "https://scholar.google.com/citations?user=uoCn8c8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "uoCn8c8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=uoCn8c8AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "arxiv.org",
+          "file_format": "PDF",
+          "link": "https://arxiv.org/pdf/2006.11371"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=JMFUJCFILOsJ",
+        "cited_by": {
+          "total": 1445,
+          "link": "https://scholar.google.com/scholar?cites=16945998805068988708&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "16945998805068988708",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=16945998805068988708&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:JMFUJCFILOsJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AJMFUJCFILOsJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 2,
+          "link": "https://scholar.google.com/scholar?cluster=16945998805068988708&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "16945998805068988708",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=16945998805068988708&engine=google_scholar&hl=en&num=20"
+        },
+        "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:JMFUJCFILOsJ:scholar.google.com/+explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+      }
+    },
+    {
+      "position": 6,
+      "title": "Peeking inside the black-box: a survey on explainable artificial intelligence (XAI)",
+      "result_id": "xwIUjztrSQUJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/8466590/",
+      "snippet": "… To address this issue, Explainable Artificial Intelligence (XAI) proposes to make a shift towards more transparent AI. It aims to create a suite of techniques that produce more explainable …",
+      "publication_info": {
+        "summary": "A Adadi, M Berrada - IEEE access, 2018 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "A Adadi",
+            "link": "https://scholar.google.com/citations?user=JGT4CGMAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "JGT4CGMAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=JGT4CGMAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "M Berrada",
+            "link": "https://scholar.google.com/citations?user=U1-JR_QAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "U1-JR_QAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=U1-JR_QAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "ieee.org",
+          "file_format": "PDF",
+          "link": "https://ieeexplore.ieee.org/iel7/6287639/8274985/08466590.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=xwIUjztrSQUJ",
+        "cited_by": {
+          "total": 10114,
+          "link": "https://scholar.google.com/scholar?cites=380953547037213383&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "380953547037213383",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=380953547037213383&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:xwIUjztrSQUJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AxwIUjztrSQUJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 7,
+          "link": "https://scholar.google.com/scholar?cluster=380953547037213383&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "380953547037213383",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=380953547037213383&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 7,
+      "title": "Explainable artificial intelligence: a systematic review",
+      "result_id": "6-NFAcNJpwUJ",
+      "link": "https://arxiv.org/abs/2006.00093",
+      "snippet": "… articles focused on the concept of explainability, about 350 have been considered … explainable artificial intelligence”, “explainable machine learning” and “interpretable machine learning…",
+      "publication_info": {
+        "summary": "G Vilone, L Longo - arXiv preprint arXiv:2006.00093, 2020 - arxiv.org",
+        "authors": [
+          {
+            "name": "G Vilone",
+            "link": "https://scholar.google.com/citations?user=lWM9ozIAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "lWM9ozIAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=lWM9ozIAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "L Longo",
+            "link": "https://scholar.google.com/citations?user=oBqRuY8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "oBqRuY8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oBqRuY8AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "arxiv.org",
+          "file_format": "PDF",
+          "link": "https://arxiv.org/pdf/2006.00093"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=6-NFAcNJpwUJ",
+        "cited_by": {
+          "total": 697,
+          "link": "https://scholar.google.com/scholar?cites=407375393189127147&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "407375393189127147",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=407375393189127147&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:6-NFAcNJpwUJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A6-NFAcNJpwUJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 6,
+          "link": "https://scholar.google.com/scholar?cluster=407375393189127147&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "407375393189127147",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=407375393189127147&engine=google_scholar&hl=en&num=20"
+        },
+        "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:6-NFAcNJpwUJ:scholar.google.com/+explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+      }
+    },
+    {
+      "position": 8,
+      "title": "A historical perspective of explainable artificial intelligence",
+      "result_id": "6vJUzCHlQK0J",
+      "link": "https://wires.onlinelibrary.wiley.com/doi/abs/10.1002/widm.1391",
+      "snippet": "… In this article, we look at the literature of Explainable Artificial Intelligence (XAI) from a historical perspective of traditional approaches as well as approaches currently being developed. …",
+      "publication_info": {
+        "summary": "R Confalonieri, L Coba, B Wagner… - … Reviews: Data Mining …, 2021 - Wiley Online Library",
+        "authors": [
+          {
+            "name": "R Confalonieri",
+            "link": "https://scholar.google.com/citations?user=zZPB9jUAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "zZPB9jUAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=zZPB9jUAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "L Coba",
+            "link": "https://scholar.google.com/citations?user=gsj8LcwAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "gsj8LcwAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=gsj8LcwAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "B Wagner",
+            "link": "https://scholar.google.com/citations?user=4HyOE-wAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "4HyOE-wAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=4HyOE-wAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "wiley.com",
+          "file_format": "PDF",
+          "link": "https://wires.onlinelibrary.wiley.com/doi/pdfdirect/10.1002/widm.1391?utm_source=consensus"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=6vJUzCHlQK0J",
+        "cited_by": {
+          "total": 650,
+          "link": "https://scholar.google.com/scholar?cites=12484230100395815658&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "12484230100395815658",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=12484230100395815658&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:6vJUzCHlQK0J:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A6vJUzCHlQK0J%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 14,
+          "link": "https://scholar.google.com/scholar?cluster=12484230100395815658&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "12484230100395815658",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=12484230100395815658&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 9,
+      "title": "Towards explainable artificial intelligence",
+      "result_id": "3am4zxoEBvEJ",
+      "link": "https://link.springer.com/chapter/10.1007/978-3-030-28954-6_1",
+      "snippet": "… in the field of explainable artificial intelligence and aims to … With explainable AI it may be possible to also identify such … Recent techniques of explainable AI are briefly summarized in …",
+      "publication_info": {
+        "summary": "W Samek, KR Müller - Explainable AI: interpreting, explaining and …, 2019 - Springer",
+        "authors": [
+          {
+            "name": "W Samek",
+            "link": "https://scholar.google.com/citations?user=7aQwO08AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "7aQwO08AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=7aQwO08AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "KR Müller",
+            "link": "https://scholar.google.com/citations?user=jplQac8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "jplQac8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=jplQac8AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "arxiv.org",
+          "file_format": "PDF",
+          "link": "https://arxiv.org/pdf/1909.12072"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=3am4zxoEBvEJ",
+        "cited_by": {
+          "total": 1160,
+          "link": "https://scholar.google.com/scholar?cites=17367573526201543133&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "17367573526201543133",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=17367573526201543133&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:3am4zxoEBvEJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A3am4zxoEBvEJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 7,
+          "link": "https://scholar.google.com/scholar?cluster=17367573526201543133&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "17367573526201543133",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=17367573526201543133&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 10,
+      "title": "Notions of explainability and evaluation approaches for explainable artificial intelligence",
+      "result_id": "9BPleFaE7-IJ",
+      "type": "Html",
+      "link": "https://www.sciencedirect.com/science/article/pii/S1566253521001093",
+      "snippet": "… Explainable Artificial Intelligence (XAI) has experienced a … machine learning, particularly deep learning, that has led to the development of highly accurate models that lack explainability …",
+      "publication_info": {
+        "summary": "G Vilone, L Longo - Information Fusion, 2021 - Elsevier",
+        "authors": [
+          {
+            "name": "G Vilone",
+            "link": "https://scholar.google.com/citations?user=lWM9ozIAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "lWM9ozIAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=lWM9ozIAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "L Longo",
+            "link": "https://scholar.google.com/citations?user=oBqRuY8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "oBqRuY8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oBqRuY8AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "sciencedirect.com",
+          "file_format": "HTML",
+          "link": "https://www.sciencedirect.com/science/article/pii/S1566253521001093"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=9BPleFaE7-IJ",
+        "html_version": "https://www.sciencedirect.com/science/article/pii/S1566253521001093",
+        "cited_by": {
+          "total": 931,
+          "link": "https://scholar.google.com/scholar?cites=16352434278935892980&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "16352434278935892980",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=16352434278935892980&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:9BPleFaE7-IJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A9BPleFaE7-IJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 9,
+          "link": "https://scholar.google.com/scholar?cluster=16352434278935892980&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "16352434278935892980",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=16352434278935892980&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 11,
+      "title": "DARPA's explainable artificial intelligence program",
+      "result_id": "ew4nmaoeqgQJ",
+      "link": "https://onlinelibrary.wiley.com/doi/abs/10.1609/aimag.v40i2.2850",
+      "snippet": "… DARPA’s explainable artificial intelligence (XAI) program endeavors to create AI systems … Realizing this goal requires methods for learning more explainable models, designing effective …",
+      "publication_info": {
+        "summary": "D Gunning, DW Aha - AI magazine, 2019 - Wiley Online Library",
+        "authors": [
+          {
+            "name": "D Gunning",
+            "link": "https://scholar.google.com/citations?user=niuOiggAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "niuOiggAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=niuOiggAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "DW Aha",
+            "link": "https://scholar.google.com/citations?user=V6bim9AAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "V6bim9AAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=V6bim9AAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "aaai.org",
+          "file_format": "PDF",
+          "link": "https://ojs.aaai.org/aimagazine/index.php/aimagazine/article/download/2850/3419?utm_source=chatgpt.com"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=ew4nmaoeqgQJ",
+        "cited_by": {
+          "total": 3495,
+          "link": "https://scholar.google.com/scholar?cites=336114840255270523&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "336114840255270523",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=336114840255270523&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:ew4nmaoeqgQJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3Aew4nmaoeqgQJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 13,
+          "link": "https://scholar.google.com/scholar?cluster=336114840255270523&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "336114840255270523",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=336114840255270523&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 12,
+      "title": "A review of trustworthy and explainable artificial intelligence (XAI)",
+      "result_id": "y99A-6hwlooJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/10188681/",
+      "snippet": "… of an eXplainable AI and lists the potential drawbacks and pitfalls of building eXplainable AI. … of building a reliable, interpretable, eXplainable, and Trustworthy AI systems are explained …",
+      "publication_info": {
+        "summary": "V Chamola, V Hassija, AR Sulthana, D Ghosh… - IEEe …, 2023 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "V Chamola",
+            "link": "https://scholar.google.com/citations?user=pL5TogoAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "pL5TogoAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=pL5TogoAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "V Hassija",
+            "link": "https://scholar.google.com/citations?user=X45MXxsAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "X45MXxsAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=X45MXxsAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "AR Sulthana",
+            "link": "https://scholar.google.com/citations?user=UM_rgP8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "UM_rgP8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=UM_rgP8AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "D Ghosh",
+            "link": "https://scholar.google.com/citations?user=YfAViCgAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "YfAViCgAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=YfAViCgAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "ieee.org",
+          "file_format": "PDF",
+          "link": "https://ieeexplore.ieee.org/iel7/6287639/10005208/10188681.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=y99A-6hwlooJ",
+        "cited_by": {
+          "total": 505,
+          "link": "https://scholar.google.com/scholar?cites=9986293094812803019&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "9986293094812803019",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=9986293094812803019&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:y99A-6hwlooJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3Ay99A-6hwlooJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 4,
+          "link": "https://scholar.google.com/scholar?cluster=9986293094812803019&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "9986293094812803019",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=9986293094812803019&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 13,
+      "title": "Four principles of explainable artificial intelligence",
+      "result_id": "KguBFjiYiqoJ",
+      "type": "Pdf",
+      "link": "https://apjohndim.com/wp-content/uploads/suggested-papers/AI%20and%20XAI%20Guidelines/NISTIR%208312%20-%20Four%20Principles%20of%20Explainable%20Artificial%20Intelligence.pdf",
+      "snippet": "… We introduce four principles for explainable artificial intelligence (AI) that comprise fundamental properties for explainable AI systems. We propose that explainable AI systems deliver …",
+      "publication_info": {
+        "summary": "PJ Phillips, PJ Phillips, CA Hahn, PC Fontana… - 2021 - apjohndim.com",
+        "authors": [
+          {
+            "name": "PJ Phillips",
+            "link": "https://scholar.google.com/citations?user=98Uq2IsAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "98Uq2IsAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=98Uq2IsAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "PJ Phillips"
+          },
+          {
+            "name": "CA Hahn",
+            "link": "https://scholar.google.com/citations?user=bXAGefAAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "bXAGefAAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=bXAGefAAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "PC Fontana",
+            "link": "https://scholar.google.com/citations?user=HeQW_KYAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "HeQW_KYAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=HeQW_KYAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "apjohndim.com",
+          "file_format": "PDF",
+          "link": "https://apjohndim.com/wp-content/uploads/suggested-papers/AI%20and%20XAI%20Guidelines/NISTIR%208312%20-%20Four%20Principles%20of%20Explainable%20Artificial%20Intelligence.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=KguBFjiYiqoJ",
+        "cited_by": {
+          "total": 510,
+          "link": "https://scholar.google.com/scholar?cites=12288801899896965930&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "12288801899896965930",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=12288801899896965930&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:KguBFjiYiqoJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AKguBFjiYiqoJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 10,
+          "link": "https://scholar.google.com/scholar?cluster=12288801899896965930&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "12288801899896965930",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=12288801899896965930&engine=google_scholar&hl=en&num=20"
+        },
+        "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:KguBFjiYiqoJ:scholar.google.com/+explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+      }
+    },
+    {
+      "position": 14,
+      "title": "Explainable artificial intelligence (xai)—from theory to methods and applications",
+      "result_id": "4lLf2Wpcz_0J",
+      "link": "https://ieeexplore.ieee.org/abstract/document/10549884/",
+      "snippet": "… foundations of Explainable Artificial Intelligence (XAI), … machine learning outputs into more transparent decisions. We also present a careful overview of the state-of-the-art explainability …",
+      "publication_info": {
+        "summary": "ES Ortigossa, T Gonçalves, LG Nonato - IEEE Access, 2024 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "ES Ortigossa",
+            "link": "https://scholar.google.com/citations?user=ICFHzKcAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "ICFHzKcAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=ICFHzKcAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "T Gonçalves",
+            "link": "https://scholar.google.com/citations?user=AGQ3L8QAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "AGQ3L8QAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AGQ3L8QAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "LG Nonato",
+            "link": "https://scholar.google.com/citations?user=p2tLSUsAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "p2tLSUsAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=p2tLSUsAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "ieee.org",
+          "file_format": "PDF",
+          "link": "https://ieeexplore.ieee.org/iel8/6287639/6514899/10549884.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=4lLf2Wpcz_0J",
+        "cited_by": {
+          "total": 175,
+          "link": "https://scholar.google.com/scholar?cites=18288938225766453986&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "18288938225766453986",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=18288938225766453986&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:4lLf2Wpcz_0J:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A4lLf2Wpcz_0J%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 4,
+          "link": "https://scholar.google.com/scholar?cluster=18288938225766453986&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "18288938225766453986",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=18288938225766453986&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 15,
+      "title": "A survey on explainable artificial intelligence (xai): Toward medical xai",
+      "result_id": "LYwTQnU-AQ0J",
+      "link": "https://ieeexplore.ieee.org/abstract/document/9233366/",
+      "snippet": "… Interpretability and explainability of ML algorithms have thus become pressing issues: who … to capture interpretability, and the topic explainable artificial intelligence (XAI) has become a …",
+      "publication_info": {
+        "summary": "E Tjoa, C Guan - IEEE transactions on neural networks and …, 2020 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "E Tjoa",
+            "link": "https://scholar.google.com/citations?user=hh9WwAMAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "hh9WwAMAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=hh9WwAMAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "C Guan",
+            "link": "https://scholar.google.com/citations?user=sg4vxPoAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "sg4vxPoAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=sg4vxPoAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "ieee.org",
+          "file_format": "PDF",
+          "link": "https://ieeexplore.ieee.org/iel7/5962385/9591206/09233366.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=LYwTQnU-AQ0J",
+        "cited_by": {
+          "total": 3619,
+          "link": "https://scholar.google.com/scholar?cites=937098870810446893&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "937098870810446893",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=937098870810446893&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:LYwTQnU-AQ0J:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3ALYwTQnU-AQ0J%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 16,
+          "link": "https://scholar.google.com/scholar?cluster=937098870810446893&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "937098870810446893",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=937098870810446893&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 16,
+      "title": "Explainable artificial intelligence approaches: A survey",
+      "result_id": "fav94VtER3sJ",
+      "link": "https://arxiv.org/abs/2101.09429",
+      "snippet": "… of explainability of a decision from an Artificial Intelligence (AI… While many popular Explainable Artificial Intelligence (XAI) … insight on quantifying explainability, and recommend paths …",
+      "publication_info": {
+        "summary": "SR Islam, W Eberle, SK Ghafoor, M Ahmed - arXiv preprint arXiv …, 2021 - arxiv.org",
+        "authors": [
+          {
+            "name": "SR Islam",
+            "link": "https://scholar.google.com/citations?user=Rr2TK2AAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "Rr2TK2AAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=Rr2TK2AAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "W Eberle",
+            "link": "https://scholar.google.com/citations?user=v_Lx8lYAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "v_Lx8lYAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=v_Lx8lYAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "SK Ghafoor",
+            "link": "https://scholar.google.com/citations?user=oizR1NUAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "oizR1NUAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=oizR1NUAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "M Ahmed",
+            "link": "https://scholar.google.com/citations?user=U4npn9cAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "U4npn9cAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=U4npn9cAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "arxiv.org",
+          "file_format": "PDF",
+          "link": "https://arxiv.org/pdf/2101.09429"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=fav94VtER3sJ",
+        "cited_by": {
+          "total": 241,
+          "link": "https://scholar.google.com/scholar?cites=8883143951435803517&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "8883143951435803517",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=8883143951435803517&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:fav94VtER3sJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3Afav94VtER3sJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 4,
+          "link": "https://scholar.google.com/scholar?cluster=8883143951435803517&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "8883143951435803517",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=8883143951435803517&engine=google_scholar&hl=en&num=20"
+        },
+        "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:fav94VtER3sJ:scholar.google.com/+explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+      }
+    },
+    {
+      "position": 17,
+      "title": "xxAI-beyond explainable artificial intelligence",
+      "result_id": "reaNgdwRuJgJ",
+      "link": "https://link.springer.com/chapter/10.1007/978-3-031-04083-2_1",
+      "snippet": "… The research field of explainable artificial intelligence (XAI) … towards a broader vision for explainable AI in moving beyond … exciting research developments in explainable AI but also a …",
+      "publication_info": {
+        "summary": "A Holzinger, R Goebel, R Fong, T Moon… - … Extending Explainable …, 2020 - Springer",
+        "authors": [
+          {
+            "name": "A Holzinger",
+            "link": "https://scholar.google.com/citations?user=BTBd5V4AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "BTBd5V4AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=BTBd5V4AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "R Goebel",
+            "link": "https://scholar.google.com/citations?user=fTgRyn4AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "fTgRyn4AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=fTgRyn4AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "R Fong",
+            "link": "https://scholar.google.com/citations?user=39cUD3gAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "39cUD3gAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=39cUD3gAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "T Moon",
+            "link": "https://scholar.google.com/citations?user=lQlioBoAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "lQlioBoAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=lQlioBoAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "springer.com",
+          "file_format": "PDF",
+          "link": "https://link.springer.com/content/pdf/10.1007/978-3-031-04083-2_1.pdf"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=reaNgdwRuJgJ",
+        "cited_by": {
+          "total": 118,
+          "link": "https://scholar.google.com/scholar?cites=11004565328243844781&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "11004565328243844781",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=11004565328243844781&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:reaNgdwRuJgJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AreaNgdwRuJgJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 14,
+          "link": "https://scholar.google.com/scholar?cluster=11004565328243844781&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "11004565328243844781",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=11004565328243844781&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 18,
+      "title": "Explainable artificial intelligence (XAI): concepts and challenges in healthcare",
+      "result_id": "3I-pOnIvqEcJ",
+      "type": "Html",
+      "link": "https://www.mdpi.com/2673-2688/4/3/34",
+      "snippet": "Artificial Intelligence (AI) describes computer systems able to perform tasks that normally require human intelligence, such as visual perception, speech recognition, decision-making, …",
+      "publication_info": {
+        "summary": "T Hulsen - Ai, 2023 - mdpi.com",
+        "authors": [
+          {
+            "name": "T Hulsen",
+            "link": "https://scholar.google.com/citations?user=0Q2mXc8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "0Q2mXc8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=0Q2mXc8AAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "mdpi.com",
+          "file_format": "HTML",
+          "link": "https://www.mdpi.com/2673-2688/4/3/34"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=3I-pOnIvqEcJ",
+        "html_version": "https://www.mdpi.com/2673-2688/4/3/34",
+        "cited_by": {
+          "total": 372,
+          "link": "https://scholar.google.com/scholar?cites=5163429140437241820&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "5163429140437241820",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=5163429140437241820&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:3I-pOnIvqEcJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3A3I-pOnIvqEcJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 14,
+          "link": "https://scholar.google.com/scholar?cluster=5163429140437241820&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "5163429140437241820",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=5163429140437241820&engine=google_scholar&hl=en&num=20"
+        },
+        "cached_page_link": "https://scholar.googleusercontent.com/scholar?q=cache:3I-pOnIvqEcJ:scholar.google.com/+explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+      }
+    },
+    {
+      "position": 19,
+      "title": "From artificial intelligence to explainable artificial intelligence in industry 4.0: a survey on what, how, and where",
+      "result_id": "MmEmLtOwTNkJ",
+      "link": "https://ieeexplore.ieee.org/abstract/document/9695219/",
+      "snippet": "… However, for a stable deployment of the artificial intelligence (AI) … “Explainable.” In this scenario, this work aims to provide a comprehensive survey of AI, explainable artificial intelligence …",
+      "publication_info": {
+        "summary": "I Ahmed, G Jeon, F Piccialli - IEEE transactions on industrial …, 2022 - ieeexplore.ieee.org",
+        "authors": [
+          {
+            "name": "I Ahmed",
+            "link": "https://scholar.google.com/citations?user=qPz-iucAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "qPz-iucAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=qPz-iucAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "G Jeon",
+            "link": "https://scholar.google.com/citations?user=AbWB9I8AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "AbWB9I8AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=AbWB9I8AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "F Piccialli",
+            "link": "https://scholar.google.com/citations?user=CLNn_9gAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "CLNn_9gAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=CLNn_9gAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=MmEmLtOwTNkJ",
+        "cited_by": {
+          "total": 1260,
+          "link": "https://scholar.google.com/scholar?cites=15658084425519227186&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "15658084425519227186",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=15658084425519227186&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:MmEmLtOwTNkJ:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AMmEmLtOwTNkJ%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 6,
+          "link": "https://scholar.google.com/scholar?cluster=15658084425519227186&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "15658084425519227186",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=15658084425519227186&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    },
+    {
+      "position": 20,
+      "title": "Explainable artificial intelligence in education",
+      "result_id": "kI74QK1aLf8J",
+      "type": "Html",
+      "link": "https://www.sciencedirect.com/science/article/pii/S2666920X22000297",
+      "snippet": "… Artificial Intelligence (AI) algorithms. One of the emerging methods for increasing trust in AI systems is to use eXplainable … key aspects in relation to explainability for studying, designing …",
+      "publication_info": {
+        "summary": "H Khosravi, SB Shum, G Chen, C Conati… - … : artificial intelligence, 2022 - Elsevier",
+        "authors": [
+          {
+            "name": "H Khosravi",
+            "link": "https://scholar.google.com/citations?user=0U7jTbYAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "0U7jTbYAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=0U7jTbYAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "SB Shum",
+            "link": "https://scholar.google.com/citations?user=t3774iUAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "t3774iUAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=t3774iUAAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "G Chen",
+            "link": "https://scholar.google.com/citations?user=NqOqvk0AAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "NqOqvk0AAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=NqOqvk0AAAAJ&engine=google_scholar_author&hl=en"
+          },
+          {
+            "name": "C Conati",
+            "link": "https://scholar.google.com/citations?user=Ytp9oFQAAAAJ&hl=en&num=20&oi=sra",
+            "author_id": "Ytp9oFQAAAAJ",
+            "serpapi_scholar_link": "https://serpapi.com/search.json?author_id=Ytp9oFQAAAAJ&engine=google_scholar_author&hl=en"
+          }
+        ]
+      },
+      "resources": [
+        {
+          "title": "sciencedirect.com",
+          "file_format": "HTML",
+          "link": "https://www.sciencedirect.com/science/article/pii/S2666920X22000297"
+        }
+      ],
+      "inline_links": {
+        "serpapi_cite_link": "https://serpapi.com/search.json?engine=google_scholar_cite&hl=en&q=kI74QK1aLf8J",
+        "html_version": "https://www.sciencedirect.com/science/article/pii/S2666920X22000297",
+        "cited_by": {
+          "total": 1385,
+          "link": "https://scholar.google.com/scholar?cites=18387452553789476496&as_sdt=2005&sciodt=0,5&hl=en&num=20",
+          "cites_id": "18387452553789476496",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=2005&cites=18387452553789476496&engine=google_scholar&hl=en&num=20"
+        },
+        "related_pages_link": "https://scholar.google.com/scholar?q=related:kI74QK1aLf8J:scholar.google.com/&scioq=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+        "serpapi_related_pages_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=related%3AkI74QK1aLf8J%3Ascholar.google.com%2F",
+        "versions": {
+          "total": 11,
+          "link": "https://scholar.google.com/scholar?cluster=18387452553789476496&hl=en&num=20&as_sdt=0,5",
+          "cluster_id": "18387452553789476496",
+          "serpapi_scholar_link": "https://serpapi.com/search.json?as_sdt=0%2C5&cluster=18387452553789476496&engine=google_scholar&hl=en&num=20"
+        }
+      }
+    }
+  ],
+  "related_searches": [
+    {
+      "query": "explainable artificial intelligence xai",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=1&q=explainable+artificial+intelligence+xai&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence darpa",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=2&q=explainable+artificial+intelligence+darpa&qst=ib"
+    },
+    {
+      "query": "deep learning models explainable artificial intelligence",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=3&q=deep+learning+models+explainable+artificial+intelligence&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence taxonomies",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=4&q=explainable+artificial+intelligence+taxonomies&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence four principles",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=5&q=explainable+artificial+intelligence+four+principles&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence black box",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=6&q=explainable+artificial+intelligence+black+box&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence machine learning",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=7&q=explainable+artificial+intelligence+machine+learning&qst=ib"
+    },
+    {
+      "query": "explainable artificial intelligence healthcare",
+      "link": "https://scholar.google.com/scholar?hl=en&num=20&as_sdt=0,5&qsp=8&q=explainable+artificial+intelligence+healthcare&qst=ib"
+    }
+  ],
+  "pagination": {
+    "current": 1,
+    "next": "https://scholar.google.com/scholar?start=20&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+    "other_pages": {
+      "2": "https://scholar.google.com/scholar?start=20&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "3": "https://scholar.google.com/scholar?start=40&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "4": "https://scholar.google.com/scholar?start=60&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "5": "https://scholar.google.com/scholar?start=80&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "6": "https://scholar.google.com/scholar?start=100&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "7": "https://scholar.google.com/scholar?start=120&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "8": "https://scholar.google.com/scholar?start=140&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "9": "https://scholar.google.com/scholar?start=160&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5",
+      "10": "https://scholar.google.com/scholar?start=180&q=explainable+artificial+intelligence&hl=en&num=20&as_sdt=0,5"
+    }
+  },
+  "serpapi_pagination": {
+    "current": 1,
+    "next_link": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=20",
+    "next": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=20",
+    "other_pages": {
+      "2": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=20",
+      "3": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=40",
+      "4": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=60",
+      "5": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=80",
+      "6": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=100",
+      "7": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=120",
+      "8": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=140",
+      "9": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=160",
+      "10": "https://serpapi.com/search.json?as_sdt=0%2C5&engine=google_scholar&hl=en&num=20&q=explainable+artificial+intelligence&start=180"
+    }
+  }
+}
