@@ -1,0 +1,95 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gap-finder 0.1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Gap Finder — find the space in the literature"
+msgstr "Gap Finder — encontre o espaço na literatura"
+
+msgid "Google Scholar search + local research-gap analysis."
+msgstr "Busca no Google Scholar + análise local de lacunas de pesquisa."
+
+msgid "Research topic"
+msgstr "Tema de pesquisa"
+
+msgid "Number of papers"
+msgstr "Número de papers"
+
+msgid "Year window (start–end)"
+msgstr "Janela de anos (início–fim)"
+
+msgid "Citation style"
+msgstr "Formato de citação"
+
+msgid "Analyze gaps"
+msgstr "Analisar lacunas"
+
+msgid "Searching and analyzing…"
+msgstr "Buscando e analisando…"
+
+msgid "Gap opportunity score"
+msgstr "Índice de oportunidade de gap"
+
+msgid "Suggested directions"
+msgstr "Direções sugeridas"
+
+msgid "Temporal density"
+msgstr "Densidade temporal"
+
+msgid "Subtopic whitespace"
+msgstr "Whitespace de subtópicos"
+
+msgid "Citation stagnation"
+msgstr "Estagnação de citações"
+
+msgid "Declared open questions"
+msgstr "Questões abertas declaradas"
+
+msgid "Reading list"
+msgstr "Reading list"
+
+msgid "No results found."
+msgstr "Nenhum resultado encontrado."
+
+msgid "Share of papers from the last 3 years"
+msgstr "Fração de papers dos últimos 3 anos"
+
+msgid "papers"
+msgstr "papers"
+
+msgid "citations"
+msgstr "citações"
+
+msgid "Most-cited papers"
+msgstr "Papers mais citados"
+
+msgid "Underexplored terms"
+msgstr "Termos pouco explorados"
+
+msgid "Hot terms"
+msgstr "Termos quentes"
+
+msgid "No API key — running offline (fixtures). Set SERPAPIKEY and `record`/`online` mode for live data."
+msgstr "Sem chave — rodando offline (fixtures). Defina SERPAPIKEY e o modo `record`/`online` para dados ao vivo."
+
+msgid "Offline (replay): using fixtures, zero credits."
+msgstr "Modo offline (replay): usando fixtures, zero crédito."
+
+msgid "Top-5 year: %(avg_year)s · top-3 share: %(share)s"
+msgstr "Top-5 ano: %(avg_year)s · top-3 share: %(share)s"
+
+msgid "Underexplored subtopics (few papers, low citations): %(terms)s."
+msgstr "Subtópicos pouco explorados (poucos papers, baixas citações): %(terms)s."
+
+msgid "Citations are still concentrated on older work — a recent result with no strong follow-up is a candidate gap."
+msgstr "Citações ainda concentradas em trabalhos antigos — um resultado recente sem desdobramento forte é um gap candidato."
+
+msgid "Low publication activity in the last 3 years: verify whether the field declined or a space opened."
+msgstr "Baixa atividade de publicação nos últimos 3 anos: verifique se o campo declinou ou se um espaço se abriu."
+
+msgid "%(count)s paper(s) explicitly declare open questions / future work."
+msgstr "%(count)s trabalho(s) declaram explicitamente questões abertas / trabalhos futuros."
+
+msgid "Field looks saturated and recent — consider a narrower niche or a cross-domain angle."
+msgstr "O campo parece saturado e recente — considere um nicho mais estreito ou um ângulo interdisciplinar."

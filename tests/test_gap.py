@@ -38,3 +38,12 @@ def test_subtopic_whitespace_returns_terms():
     ]
     report = GapAnalyzer(papers).analyze()
     assert report.whitespace["underexplored_terms"]
+
+
+def test_directions_use_structured_ids():
+    papers = [_paper("A study", 2015, snippet="future work is still needed")]
+    report = GapAnalyzer(papers).analyze()
+    ids = [direction["id"] for direction in report.directions]
+    assert "open_questions" in ids
+    for direction in report.directions:
+        assert "id" in direction

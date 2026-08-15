@@ -228,33 +228,18 @@ class GapAnalyzer:
             terms = ", ".join(
                 item["term"] for item in whitespace["underexplored_terms"][:THRESHOLDS.direction_terms_limit]
             )
-            directions.append({
-                "en": f"Underexplored subtopics (few papers, low citations): {terms}.",
-                "pt": f"Subtópicos pouco explorados (poucos papers, baixas citações): {terms}.",
-            })
+            directions.append({"id": "underexplored", "terms": terms})
 
         if stagnation["note"].startswith("stagnant"):
-            directions.append({
-                "en": "Citations are still concentrated on older work — a recent result with no strong follow-up is a candidate gap.",
-                "pt": "Citações ainda concentradas em trabalhos antigos — um resultado recente sem desdobramento forte é um gap candidato.",
-            })
+            directions.append({"id": "stagnant"})
 
         if temporal["note"] == "cooling":
-            directions.append({
-                "en": "Low publication activity in the last 3 years: verify whether the field declined or a space opened.",
-                "pt": "Baixa atividade de publicação nos últimos 3 anos: verifique se o campo declinou ou se um espaço se abriu.",
-            })
+            directions.append({"id": "cooling"})
 
         if open_questions["count"]:
-            directions.append({
-                "en": f"{open_questions['count']} paper(s) explicitly declare open questions / future work.",
-                "pt": f"{open_questions['count']} trabalho(s) declaram explicitamente questões abertas / trabalhos futuros.",
-            })
+            directions.append({"id": "open_questions", "count": open_questions["count"]})
 
         if not directions:
-            directions.append({
-                "en": "Field looks saturated and recent — consider a narrower niche or a cross-domain angle.",
-                "pt": "O campo parece saturado e recente — considere um nicho mais estreito ou um ângulo interdisciplinar.",
-            })
+            directions.append({"id": "saturated"})
 
         return directions

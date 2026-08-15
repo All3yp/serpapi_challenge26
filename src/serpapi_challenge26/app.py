@@ -7,8 +7,16 @@ import streamlit as st
 from .caching import CachingClient, CacheMiss
 from .config import get_api_key, get_mode
 from .gap import GapAnalyzer
-from .i18n import detect_lang, format_decimal, format_int, format_percent
+from .i18n import _, detect_lang, format_decimal, format_int, format_percent, set_language
 from .scholar import CURRENT_YEAR, Scholar, format_citation
+
+_DIRECTION_TEXTS = {
+    "underexplored": "Underexplored subtopics (few papers, low citations): %(terms)s.",
+    "stagnant": "Citations are still concentrated on older work — a recent result with no strong follow-up is a candidate gap.",
+    "cooling": "Low publication activity in the last 3 years: verify whether the field declined or a space opened.",
+    "open_questions": "%(count)s paper(s) explicitly declare open questions / future work.",
+    "saturated": "Field looks saturated and recent — consider a narrower niche or a cross-domain angle.",
+}
 
 
 def _lang() -> str:
@@ -18,121 +26,62 @@ def _lang() -> str:
     return detect_lang()
 
 
-T = {
-    "pt": {
-        "title": "Gap Finder — encontre o espaço na literatura",
-        "subtitle": "Busca no Google Scholar + análise local de lacunas de pesquisa.",
-        "query": "Tema de pesquisa",
-        "num": "Número de papers",
-        "years": "Janela de anos (início–fim)",
-        "style": "Formato de citação",
-        "run": "Analisar lacunas",
-        "loading": "Buscando e analisando…",
-        "gap_score": "Índice de oportunidade de gap",
-        "directions": "Direções sugeridas",
-        "temporal": "Densidade temporal",
-        "whitespace": "Whitespace de subtópicos",
-        "stagnation": "Estagnação de citações",
-        "open": "Questões abertas declaradas",
-        "reading": "Reading list",
-        "no_results": "Nenhum resultado encontrado.",
-        "recent_ratio": "Fração de papers dos últimos 3 anos",
-        "papers": "papers",
-        "cites": "citações",
-        "top_papers": "Papers mais citados",
-        "underexplored": "Termos pouco explorados",
-        "hot_terms": "Termos quentes",
-        "no_key": "Sem chave — rodando offline (fixtures). Defina SERPAPIKEY e o modo `record`/`online` para dados ao vivo.",
-        "offline": "Modo offline (replay): usando fixtures, zero crédito.",
-        "year": "Ano",
-    },
-    "en": {
-        "title": "Gap Finder — find the space in the literature",
-        "subtitle": "Google Scholar search + local research-gap analysis.",
-        "query": "Research topic",
-        "num": "Number of papers",
-        "years": "Year window (start–end)",
-        "style": "Citation style",
-        "run": "Analyze gaps",
-        "loading": "Searching and analyzing…",
-        "gap_score": "Gap opportunity score",
-        "directions": "Suggested directions",
-        "temporal": "Temporal density",
-        "whitespace": "Subtopic whitespace",
-        "stagnation": "Citation stagnation",
-        "open": "Declared open questions",
-        "reading": "Reading list",
-        "no_results": "No results found.",
-        "recent_ratio": "Share of papers from the last 3 years",
-        "papers": "papers",
-        "cites": "citations",
-        "top_papers": "Most-cited papers",
-        "underexplored": "Underexplored terms",
-        "hot_terms": "Hot terms",
-        "no_key": "No API key — running offline (fixtures). Set SERPAPIKEY and `record`/`online` mode for live data.",
-        "offline": "Offline (replay): using fixtures, zero credits.",
-        "year": "Year",
-    },
-}
-
-
-def _t(key: str) -> str:
-    return T[_lang()][key]
-
-
 def _render_report(report, papers, style: str) -> None:
-    t = _lang()
+    st.metric(_("Gap opportunity score"), f"{report.score}/100")
 
-    st.metric(_t("gap_score"), f"{report.score}/100")
-
-    st.subheader(_t("directions"))
-    for d in report.directions:
-        st.write(f"- {d[t]}")
+    st.subheader(_("Suggested directions"))
+    for direction in report.directions:
+        message = _DIRECTION_TEXTS[direction["id"]]
+        if "terms" in direction:
+            message = message % {"terms": direction["terms"]}
+        if "count" in direction:
+            message = message % {"count": direction["count"]}
+        st.write(f"- {_(message)}")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        st.subheader(_t("temporal"))
+        st.subheader(_("Temporal density"))
         temp = report.temporal
         if temp["recent_ratio"] is not None:
-            st.write(f"{_t('recent_ratio')}: **{format_percent(temp['recent_ratio'])}**")
+            st.write(f"{_('Share of papers from the last 3 years')}: **{format_percent(temp['recent_ratio'])}**")
         if temp["histogram"]:
             st.bar_chart(temp["histogram"])
 
-        st.subheader(_t("whitespace"))
+        st.subheader(_("Subtopic whitespace"))
         if report.whitespace["underexplored_terms"]:
-            st.caption(_t("underexplored"))
+            st.caption(_("Underexplored terms"))
             for item in report.whitespace["underexplored_terms"]:
                 st.write(
-                    f"- `{item['term']}` — {item['papers']} {_t('papers')}, "
-                    f"~{format_decimal(item['avg_cites'])} {_t('cites')}"
+                    f"- `{item['term']}` — {item['papers']} {_('papers')}, "
+                    f"~{format_decimal(item['avg_cites'])} {_('citations')}"
                 )
         else:
-            st.write(_t("no_results"))
+            st.write(_("No results found."))
         if report.whitespace["hot_terms"]:
-            st.caption(_t("hot_terms"))
+            st.caption(_("Hot terms"))
             st.write(", ".join(f"`{i['term']}`" for i in report.whitespace["hot_terms"]))
 
     with col2:
-        st.subheader(_t("stagnation"))
+        st.subheader(_("Citation stagnation"))
         stag = report.stagnation
         if stag["avg_top_year"]:
             st.write(
-                f"Top-5 {_t('year')}: **{format_decimal(stag['avg_top_year'])}** · "
-                f"top-3 share: **{format_percent(stag['top3_share'])}**"
+                _("Top-5 year: %(avg_year)s · top-3 share: %(share)s")
+                % {"avg_year": format_decimal(stag["avg_top_year"]), "share": format_percent(stag["top3_share"])}
             )
         if stag["top_papers"]:
-            st.caption(_t("top_papers"))
-            for p in stag["top_papers"]:
-                st.write(f"- {format_int(p['cited_by'])} {_t('cites')} — {p['title']}")
+            st.caption(_("Most-cited papers"))
+            for paper in stag["top_papers"]:
+                st.write(f"- {format_int(paper['cited_by'])} {_('citations')} — {paper['title']}")
 
-        st.subheader(_t("open"))
-        oq = report.open_questions
-        st.write(f"**{oq['count']}**")
-        for p in oq["papers"]:
-            st.write(f"- {p['title']}")
+        st.subheader(_("Declared open questions"))
+        open_questions = report.open_questions
+        st.write(f"**{open_questions['count']}**")
+        for paper in open_questions["papers"]:
+            st.write(f"- {paper['title']}")
 
-    st.subheader(_t("reading"))
+    st.subheader(_("Reading list"))
     for i, paper in enumerate(papers, 1):
         with st.expander(f"{i}. {paper.title}"):
             st.write(format_citation(paper, style))
@@ -144,8 +93,9 @@ def _render_report(report, papers, style: str) -> None:
 
 def main() -> None:
     st.set_page_config(page_title="Gap Finder", layout="wide")
-    st.title(_t("title"))
-    st.caption(_t("subtitle"))
+    set_language(_lang())
+    st.title(_("Gap Finder — find the space in the literature"))
+    st.caption(_("Google Scholar search + local research-gap analysis."))
 
     with st.sidebar:
         st.radio("Idioma / Language", ["pt", "en"], key="lang", horizontal=True)
@@ -154,32 +104,30 @@ def main() -> None:
     mode = get_mode()
 
     if not api_key:
-        st.info(_t("no_key"))
+        st.info(_("No API key — running offline (fixtures). Set SERPAPIKEY and `record`/`online` mode for live data."))
     if mode == "replay":
-        st.info(_t("offline"))
+        st.info(_("Offline (replay): using fixtures, zero credits."))
 
-    query = st.text_input(_t("query"), value="explainable artificial intelligence")
-    num = st.slider(_t("num"), 5, 50, 20, step=5)
-    yl, yh = st.slider(_t("years"), 2000, CURRENT_YEAR, (2000, CURRENT_YEAR), step=1)
+    query = st.text_input(_("Research topic"), value="explainable artificial intelligence")
+    num = st.slider(_("Number of papers"), 5, 50, 20, step=5)
+    yl, yh = st.slider(_("Year window (start–end)"), 2000, CURRENT_YEAR, (2000, CURRENT_YEAR), step=1)
     default_style = "ABNT" if _lang() == "pt" else "APA"
-    style = st.selectbox(_t("style"), ["APA", "ABNT"], index=0 if default_style == "APA" else 1)
+    style = st.selectbox(_("Citation style"), ["APA", "ABNT"], index=0 if default_style == "APA" else 1)
 
-    if st.button(_t("run"), type="primary"):
+    if st.button(_("Analyze gaps"), type="primary"):
         client = CachingClient(api_key=api_key, mode=mode)
         scholar = Scholar(client)
 
-        with st.spinner(_t("loading")):
+        with st.spinner(_("Searching and analyzing…")):
             try:
-                results = scholar.search(
-                    query, num=num, year_low=yl, year_high=yh
-                )
+                results = scholar.search(query, num=num, year_low=yl, year_high=yh)
                 papers = Scholar.parse(results)
             except CacheMiss as exc:
                 st.error(str(exc))
                 return
 
         if not papers:
-            st.warning(_t("no_results"))
+            st.warning(_("No results found."))
             return
 
         report = GapAnalyzer(papers).analyze()
