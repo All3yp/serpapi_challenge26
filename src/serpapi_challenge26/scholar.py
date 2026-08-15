@@ -185,6 +185,10 @@ def _drop_trailing_year(text: str) -> str:
     return text
 
 
+def _author_given(name: str) -> str:
+    return " ".join(name.split()[:-1])
+
+
 def _author_surname(name: str) -> str:
     return name.split()[-1]
 
@@ -195,18 +199,38 @@ def _author_initials(name: str) -> str:
     return " ".join(initials)
 
 
+def _surname_given(name: str) -> str:
+    """``Surname, Given`` (bibliography-style inversion); mononyms stay bare."""
+    given = _author_given(name)
+    surname = _author_surname(name)
+    return f"{surname}, {given}" if given else surname
+
+
+def _given_surname(name: str) -> str:
+    """``Given Surname`` (natural order); mononyms stay bare."""
+    given = _author_given(name)
+    surname = _author_surname(name)
+    return f"{given} {surname}" if given else surname
+
+
 def format_abnt(paper: Paper) -> str:
-    authors = "; ".join(
-        f"{_author_surname(a).upper()}, {_author_initials(a)}" for a in paper.authors
-    )
+    authors = "; ".join(_format_author_abnt(a) for a in paper.authors)
     year = paper.year or "s.d."
     venue = f" {paper.venue}," if paper.venue else ""
     prefix = f"{authors} " if authors else ""
     return f"{prefix}{paper.title}.{venue} {year}."
 
 
+def _format_author_abnt(name: str) -> str:
+    surname = _author_surname(name)
+    initials = _author_initials(name)
+    return f"{surname.upper()}, {initials}".rstrip(", ")
+
+
 def _format_author_apa(name: str) -> str:
-    return f"{_author_surname(name)}, {_author_initials(name)}"
+    surname = _author_surname(name)
+    initials = _author_initials(name)
+    return f"{surname}, {initials}".rstrip(", ")
 
 
 def format_apa(paper: Paper) -> str:
@@ -223,10 +247,155 @@ def format_apa(paper: Paper) -> str:
     return f"{authors} ({year}). {paper.title}.{venue}"
 
 
+def _format_author_ieee(name: str) -> str:
+    surname = _author_surname(name)
+    initials = _author_initials(name)
+    return f"{initials} {surname}".strip()
+
+
+def format_ieee(paper: Paper) -> str:
+    if not paper.authors:
+        authors = ""
+    elif len(paper.authors) == 1:
+        authors = _format_author_ieee(paper.authors[0])
+    elif len(paper.authors) == 2:
+        authors = (
+            f"{_format_author_ieee(paper.authors[0])} and "
+            f"{_format_author_ieee(paper.authors[1])}"
+        )
+    else:
+        authors = ", ".join(_format_author_ieee(a) for a in paper.authors[:-1])
+        authors += f", and {_format_author_ieee(paper.authors[-1])}"
+
+    year = str(paper.year) if paper.year else "n.d."
+    title = f'"{paper.title},"'
+    venue = f" {paper.venue}," if paper.venue else ""
+    prefix = f"{authors}, " if authors else ""
+    return f"{prefix}{title}{venue} {year}."
+
+
+_BIBTEX_ESCAPES = {
+    "\\": "\\\\",
+    "{": "\\{",
+    "}": "\\}",
+    "&": "\\&",
+    "%": "\\%",
+    "#": "\\#",
+    "_": "\\_",
+}
+
+
+def _bibtex_escape(text: str) -> str:
+    return "".join(_BIBTEX_ESCAPES.get(ch, ch) for ch in text)
+
+
+def _bibtex_key(paper: Paper) -> str:
+    surname = _author_surname(paper.authors[0]).lower() if paper.authors else ""
+    year = str(paper.year) if paper.year else ""
+    title_token = (paper.title or "paper").split()[0].lower()
+    key = "".join(ch for ch in f"{surname}{year}{title_token}" if ch.isalnum())
+    return key or "paper"
+
+
+def _bibtex_author(name: str) -> str:
+    return _surname_given(name)
+
+
+def format_bibtex(paper: Paper) -> str:
+    key = _bibtex_key(paper)
+    lines = [f"@article{{{key},"]
+    if paper.authors:
+        authors = " and ".join(_bibtex_author(a) for a in paper.authors)
+        lines.append(f"  author = {{{_bibtex_escape(authors)}}},")
+    lines.append(f"  title = {{{_bibtex_escape(paper.title)}}},")
+    if paper.year:
+        lines.append(f"  year = {{{paper.year}}},")
+    if paper.venue:
+        lines.append(f"  journal = {{{_bibtex_escape(paper.venue)}}},")
+    if paper.link:
+        lines.append(f"  url = {{{_bibtex_escape(paper.link)}}},")
+    lines.append("}")
+    return "\n".join(lines)
+
+
+def format_vancouver(paper: Paper) -> str:
+    if paper.authors:
+        names = [_format_author_vancouver(a) for a in paper.authors[:6]]
+        authors = ", ".join(names)
+        if len(paper.authors) > 6:
+            authors += ", et al"
+        authors += ". "
+    else:
+        authors = ""
+
+    title = f"{paper.title}. " if paper.title else ""
+    venue = f"{paper.venue}. " if paper.venue else ""
+    year = str(paper.year) if paper.year else ""
+    return f"{authors}{title}{venue}{year}".rstrip()
+
+
+def _format_author_vancouver(name: str) -> str:
+    surname = _author_surname(name)
+    given = _author_given(name)
+    initials = "".join(
+        f"{token[0]}" for token in given.split()
+        if token and token.lower() not in _PARTICLES
+    )
+    return f"{surname} {initials}".strip()
+
+
+def format_mla(paper: Paper) -> str:
+    if not paper.authors:
+        authors = ""
+    elif len(paper.authors) == 1:
+        authors = _surname_given(paper.authors[0])
+    elif len(paper.authors) == 2:
+        first = paper.authors[0]
+        second = paper.authors[1]
+        authors = f"{_surname_given(first)}, and {_given_surname(second)}"
+    else:
+        authors = f"{_surname_given(paper.authors[0])}, et al"
+
+    year = str(paper.year) if paper.year else "n.d."
+    title = f'"{paper.title}."'
+    venue = f" {paper.venue}," if paper.venue else ""
+    prefix = f"{authors}. " if authors else ""
+    return f"{prefix}{title}{venue} {year}."
+
+
+def format_chicago(paper: Paper) -> str:
+    if not paper.authors:
+        authors = ""
+    else:
+        authors = ", ".join(_surname_given(a) for a in paper.authors)
+
+    year = str(paper.year) if paper.year else "n.d."
+    title = f'"{paper.title}."'
+    venue = f" {paper.venue}." if paper.venue else ""
+    prefix = f"{authors}. " if authors else ""
+    return f"{prefix}{year}. {title}{venue}".strip()
+
+
 _ABNT_STYLES = ("abnt", "nbr", "nbr 6023")
+_IEEE_STYLES = ("ieee",)
+_BIBTEX_STYLES = ("bibtex", "bib")
+_VANCOUVER_STYLES = ("vancouver", "icmje")
+_MLA_STYLES = ("mla",)
+_CHICAGO_STYLES = ("chicago",)
 
 
 def format_citation(paper: Paper, style: str) -> str:
-    if style.strip().lower() in _ABNT_STYLES:
+    normalized = style.strip().lower()
+    if normalized in _ABNT_STYLES:
         return format_abnt(paper)
+    if normalized in _IEEE_STYLES:
+        return format_ieee(paper)
+    if normalized in _BIBTEX_STYLES:
+        return format_bibtex(paper)
+    if normalized in _VANCOUVER_STYLES:
+        return format_vancouver(paper)
+    if normalized in _MLA_STYLES:
+        return format_mla(paper)
+    if normalized in _CHICAGO_STYLES:
+        return format_chicago(paper)
     return format_apa(paper)

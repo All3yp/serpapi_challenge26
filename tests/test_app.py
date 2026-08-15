@@ -150,6 +150,18 @@ def test_status_badges(app):
     assert "No API key" not in module._status_badges("key", "online")
 
 
+def test_status_badges_record_mode(app):
+    module, _ = app
+    badges = module._status_badges("key", "record")
+    assert "Record mode" in badges
+    assert "badge-accent" not in badges
+
+
+def test_status_badges_online_mode(app):
+    module, _ = app
+    assert "Online mode" in module._status_badges("key", "online")
+
+
 def test_lang_uses_session_override(app):
     module, fake = app
     fake.session_state["lang"] = "pt"
@@ -271,6 +283,15 @@ def test_main_no_api_key_replay_banners(app, monkeypatch):
     fake.button_result = False
     _patch_main(module, monkeypatch, api_key=None, mode="replay")
     module.main()
+    assert len(fake.info_calls) == 2
+
+
+def test_main_no_api_key_online_falls_back_to_replay(app, monkeypatch):
+    module, fake = app
+    fake.button_result = False
+    _patch_main(module, monkeypatch, api_key=None, mode="online")
+    module.main()
+    assert len(fake.warning_calls) == 1
     assert len(fake.info_calls) == 2
 
 

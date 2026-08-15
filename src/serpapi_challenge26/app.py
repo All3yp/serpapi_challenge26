@@ -32,6 +32,13 @@ _DIRECTION_TEXTS = {
 _WIDE_OPEN = 70
 _SOME_GAPS = 45
 
+_MODE_VALUES = ("replay", "online", "record")
+_MODE_LABELS = {
+    "replay": "Offline (replay)",
+    "online": "Online (live)",
+    "record": "Record (live + save)",
+}
+
 _CSS = """
 <style>
 :root {
@@ -53,6 +60,7 @@ h1, h2, h3 {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
+  margin-top: 2.5rem;
   margin-bottom: 0.4rem;
 }
 .hero {
@@ -224,8 +232,16 @@ def _render_report(report, papers, style: str) -> None:
 
 
 def _status_badges(api_key: str | None, mode: str) -> str:
-    mode_text = _("Offline mode") if mode == "replay" else _("Online mode")
-    badges = _badge(mode_text, accent=mode == "replay")
+    if mode == "replay":
+        mode_text = _("Offline mode")
+        accent = True
+    elif mode == "record":
+        mode_text = _("Record mode")
+        accent = False
+    else:
+        mode_text = _("Online mode")
+        accent = False
+    badges = _badge(mode_text, accent=accent)
     if not api_key:
         badges += _badge(_("No API key"))
     return badges
@@ -237,24 +253,41 @@ def main() -> None:
     set_language(_lang())
 
     api_key = get_api_key()
-    mode = get_mode()
+    default_mode = get_mode()
 
     with st.sidebar:
         st.radio("Idioma / Language", ["pt", "en"], index=1 if _lang() == "en" else 0, key="lang", horizontal=True)
         st.divider()
+        mode = st.selectbox(
+            _("Search mode"),
+            _MODE_VALUES,
+            format_func=lambda m: _(_MODE_LABELS[m]),
+            index=_MODE_VALUES.index(default_mode) if default_mode in _MODE_VALUES else 0,
+            key="mode",
+        )
         query = st.text_input(_("Research topic"), value="explainable artificial intelligence")
         num = st.slider(_("Number of papers"), 5, 50, 20, step=5)
         yl, yh = st.slider(_("Year window (start–end)"), 2000, CURRENT_YEAR, (2000, CURRENT_YEAR), step=1)
         default_style = "ABNT" if _lang() == "pt" else "APA"
-        style = st.selectbox(_("Citation style"), ["APA", "ABNT"], index=0 if default_style == "APA" else 1)
+        style = st.selectbox(
+            _("Citation style"),
+            ["APA", "ABNT", "IEEE", "Vancouver", "MLA", "Chicago", "BibTeX"],
+            index=0 if default_style == "APA" else 1,
+        )
         run = st.button(_("Analyze gaps"), type="primary", use_container_width=True)
 
-    st.markdown('<div class="eyebrow">SerpApi · Google Scholar</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="eyebrow" style="color:#e0a83d;">SerpApi · Google Scholar</div>',
+        unsafe_allow_html=True,
+    )
     st.title(_("Gap Finder — find the space in the literature"))
     st.caption(_("Google Scholar search + local research-gap analysis."))
     st.markdown(_status_badges(api_key, mode), unsafe_allow_html=True)
 
     if not api_key:
+        if mode != "replay":
+            st.warning(_("No API key set — live search needs SERPAPIKEY. Falling back to offline (replay)."))
+            mode = "replay"
         st.info(_("No API key — running offline (fixtures). Set SERPAPIKEY and `record`/`online` mode for live data."))
     if mode == "replay":
         st.info(_("Offline (replay): using fixtures, zero credits."))

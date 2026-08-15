@@ -129,3 +129,21 @@ msgstr "Estagnação"
 
 msgid "Open"
 msgstr "Abertas"
+
+msgid "Search mode"
+msgstr "Modo de busca"
+
+msgid "Offline (replay)"
+msgstr "Offline (replay)"
+
+msgid "Online (live)"
+msgstr "Online (ao vivo)"
+
+msgid "Record (live + save)"
+msgstr "Gravar (ao vivo + salvar)"
+
+msgid "Record mode"
+msgstr "Modo gravação"
+
+msgid "No API key set — live search needs SERPAPIKEY. Falling back to offline (replay)."
+msgstr "Sem chave de API — a busca ao vivo precisa de SERPAPIKEY. Voltando para offline (replay)."

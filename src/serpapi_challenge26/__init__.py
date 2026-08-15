@@ -6,7 +6,17 @@ from .caching import CacheMiss, CachingClient
 from .config import get_api_key, get_mode
 from .gap import GapAnalyzer
 from .i18n import _, detect_lang, format_decimal, format_int, format_percent, set_language
-from .scholar import CURRENT_YEAR, Paper, Scholar, format_citation
+from .scholar import (
+    CURRENT_YEAR,
+    Paper,
+    Scholar,
+    format_bibtex,
+    format_chicago,
+    format_citation,
+    format_ieee,
+    format_mla,
+    format_vancouver,
+)
 
 __version__ = "0.1.0"
 
@@ -26,6 +36,11 @@ __all__ = [
     "Paper",
     "Scholar",
     "format_citation",
+    "format_ieee",
+    "format_bibtex",
+    "format_vancouver",
+    "format_mla",
+    "format_chicago",
 ]
 
 
