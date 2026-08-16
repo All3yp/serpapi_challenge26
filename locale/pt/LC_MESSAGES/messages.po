@@ -120,6 +120,15 @@ msgstr "O interesse em \"%(term)s\" está estável (%(growth)+.1f) — um nicho 
 msgid "Demand score: %(score)s/100"
 msgstr "Score de demanda: %(score)s/100"
 
+msgid "Download .bib"
+msgstr "Baixar .bib"
+
+msgid "Download .csv"
+msgstr "Baixar .csv"
+
+msgid "Download .txt"
+msgstr "Baixar .txt"
+
 msgid "Directions"
 msgstr "Direções"
 

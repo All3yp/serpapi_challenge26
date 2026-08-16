@@ -13,6 +13,7 @@ from gap_finder import (
     _,
     build_demand,
     detect_lang,
+    export_filename,
     format_citation,
     format_decimal,
     format_int,
@@ -20,6 +21,9 @@ from gap_finder import (
     get_api_key,
     get_mode,
     ngettext,
+    reading_list_bib,
+    reading_list_csv,
+    reading_list_txt,
     set_language,
 )
 
@@ -235,7 +239,30 @@ def _render_demand(demand: dict | None) -> None:
     st.caption(_("Demand score: %(score)s/100") % {"score": demand["score"]})
 
 
-def _render_reading_list(papers, style: str) -> None:
+def _render_reading_list(papers, style: str, query: str = "") -> None:
+    if papers:
+        col_bib, col_csv, col_txt = st.columns(3)
+        with col_bib:
+            st.download_button(
+                _("Download .bib"),
+                reading_list_bib(papers),
+                file_name=export_filename(query, "bib"),
+                mime="text/x-bibtex",
+            )
+        with col_csv:
+            st.download_button(
+                _("Download .csv"),
+                reading_list_csv(papers),
+                file_name=export_filename(query, "csv"),
+                mime="text/csv",
+            )
+        with col_txt:
+            st.download_button(
+                _("Download .txt"),
+                reading_list_txt(papers, style),
+                file_name=export_filename(query, "txt"),
+                mime="text/plain",
+            )
     for index, paper in enumerate(papers, 1):
         with st.expander(f"{index}. {paper.title}"):
             st.write(format_citation(paper, style))
@@ -245,7 +272,7 @@ def _render_reading_list(papers, style: str) -> None:
                 st.caption(f"PDF: {paper.pdf}")
 
 
-def _render_report(report, papers, style: str, demand=None) -> None:
+def _render_report(report, papers, style: str, demand=None, query: str = "") -> None:
     _render_hero(report)
 
     directions, temporal, whitespace, stagnation, open_questions, demand_tab, reading = st.tabs([
@@ -271,7 +298,7 @@ def _render_report(report, papers, style: str, demand=None) -> None:
     with demand_tab:
         _render_demand(demand)
     with reading:
-        _render_reading_list(papers, style)
+        _render_reading_list(papers, style, query=query)
 
 
 def _status_badges(api_key: str | None, mode: str) -> str:
@@ -369,7 +396,7 @@ def main() -> None:
             st.warning(str(exc))
 
     display_papers = papers[:num]
-    _render_report(report, display_papers, style, demand=demand)
+    _render_report(report, display_papers, style, demand=demand, query=query)
 
 
 if __name__ == "__main__":

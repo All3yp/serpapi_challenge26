@@ -75,6 +75,13 @@ class _FakeStreamlit:
     def expander(self, label, expanded=False):
         return _Ctx()
 
+    def columns(self, spec):
+        count = spec if isinstance(spec, int) else len(spec)
+        return [_Ctx() for _ in range(count)]
+
+    def download_button(self, label, data, file_name=None, mime=None):
+        pass
+
     # -- messages (recorded for assertions) ----------------------------------
     def info(self, body):
         self.info_calls.append(body)

@@ -18,6 +18,12 @@ from .scholar import (
     format_vancouver,
 )
 from .trends import Trends, build_demand
+from .export import (
+    export_filename,
+    reading_list_bib,
+    reading_list_csv,
+    reading_list_txt,
+)
 
 __version__ = "0.1.0"
 
@@ -45,6 +51,10 @@ __all__ = [
     "format_chicago",
     "Trends",
     "build_demand",
+    "reading_list_csv",
+    "reading_list_bib",
+    "reading_list_txt",
+    "export_filename",
 ]
 
 
