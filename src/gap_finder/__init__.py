@@ -17,6 +17,7 @@ from .scholar import (
     format_mla,
     format_vancouver,
 )
+from .trends import Trends, build_demand
 
 __version__ = "0.1.0"
 
@@ -42,6 +43,8 @@ __all__ = [
     "format_vancouver",
     "format_mla",
     "format_chicago",
+    "Trends",
+    "build_demand",
 ]
 
 

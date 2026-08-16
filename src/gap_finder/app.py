@@ -11,6 +11,7 @@ from gap_finder import (
     GapAnalyzer,
     Scholar,
     _,
+    build_demand,
     detect_lang,
     format_citation,
     format_decimal,
@@ -31,6 +32,12 @@ _DIRECTION_TEXTS = {
 
 _OPEN_DIRECTION_SINGULAR = "%(n)s paper explicitly declares open questions / future work: %(titles)s."
 _OPEN_DIRECTION_PLURAL = "%(n)s papers explicitly declare open questions / future work: %(titles)s."
+
+_DEMAND_TEXTS = {
+    "rising": "Interest in \"%(term)s\" is rising (%(growth)+.1f on Google Trends) — an under-published subtopic with growing demand is a strong gap.",
+    "falling": "Interest in \"%(term)s\" is falling (%(growth)+.1f) — verify whether the niche is dying or underserved.",
+    "flat": "Interest in \"%(term)s\" is flat (%(growth)+.1f) — a stable niche with room to publish.",
+}
 
 _WIDE_OPEN = 70
 _SOME_GAPS = 45
@@ -219,6 +226,15 @@ def _render_open_questions(open_questions: dict) -> None:
             st.markdown(f"> _{quote}_")
 
 
+def _render_demand(demand: dict | None) -> None:
+    if not demand:
+        st.write(_("No demand signal — run online to check Google Trends."))
+        return
+    template = _(_DEMAND_TEXTS.get(demand["note"], _DEMAND_TEXTS["flat"]))
+    st.write(template % {"term": demand["term"], "growth": demand["growth"]})
+    st.caption(_("Demand score: %(score)s/100") % {"score": demand["score"]})
+
+
 def _render_reading_list(papers, style: str) -> None:
     for index, paper in enumerate(papers, 1):
         with st.expander(f"{index}. {paper.title}"):
@@ -229,15 +245,16 @@ def _render_reading_list(papers, style: str) -> None:
                 st.caption(f"PDF: {paper.pdf}")
 
 
-def _render_report(report, papers, style: str) -> None:
+def _render_report(report, papers, style: str, demand=None) -> None:
     _render_hero(report)
 
-    directions, temporal, whitespace, stagnation, open_questions, reading = st.tabs([
+    directions, temporal, whitespace, stagnation, open_questions, demand_tab, reading = st.tabs([
         _("Directions"),
         _("Temporal density"),
         _("Subtopic whitespace"),
         _("Citation stagnation"),
         _("Open questions"),
+        _("Demand (Google Trends)"),
         _("Reading list"),
     ])
 
@@ -251,6 +268,8 @@ def _render_report(report, papers, style: str) -> None:
         _render_stagnation(report.stagnation)
     with open_questions:
         _render_open_questions(report.open_questions)
+    with demand_tab:
+        _render_demand(demand)
     with reading:
         _render_reading_list(papers, style)
 
@@ -341,8 +360,16 @@ def main() -> None:
         return
 
     report = GapAnalyzer(papers).analyze()
+
+    demand = None
+    if mode != "replay":
+        try:
+            demand = build_demand(client, report.whitespace)
+        except CacheMiss as exc:
+            st.warning(str(exc))
+
     display_papers = papers[:num]
-    _render_report(report, display_papers, style)
+    _render_report(report, display_papers, style, demand=demand)
 
 
 if __name__ == "__main__":

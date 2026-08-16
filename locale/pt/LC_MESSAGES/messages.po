@@ -102,6 +102,24 @@ msgstr[1] "%(n)s trabalhos declaram explicitamente questões abertas / trabalhos
 msgid "Field looks saturated and recent — consider a narrower niche or a cross-domain angle."
 msgstr "O campo parece saturado e recente — considere um nicho mais estreito ou um ângulo interdisciplinar."
 
+msgid "Demand (Google Trends)"
+msgstr "Demanda (Google Trends)"
+
+msgid "No demand signal — run online to check Google Trends."
+msgstr "Sem sinal de demanda — rode online para consultar o Google Trends."
+
+msgid "Interest in \"%(term)s\" is rising (%(growth)+.1f on Google Trends) — an under-published subtopic with growing demand is a strong gap."
+msgstr "O interesse em \"%(term)s\" está subindo (%(growth)+.1f no Google Trends) — um subtópico pouco publicado com demanda crescente é um gap forte."
+
+msgid "Interest in \"%(term)s\" is falling (%(growth)+.1f) — verify whether the niche is dying or underserved."
+msgstr "O interesse em \"%(term)s\" está caindo (%(growth)+.1f) — verifique se o nicho está morrendo ou é mal atendido."
+
+msgid "Interest in \"%(term)s\" is flat (%(growth)+.1f) — a stable niche with room to publish."
+msgstr "O interesse em \"%(term)s\" está estável (%(growth)+.1f) — um nicho estável com espaço para publicar."
+
+msgid "Demand score: %(score)s/100"
+msgstr "Score de demanda: %(score)s/100"
+
 msgid "Directions"
 msgstr "Direções"
 

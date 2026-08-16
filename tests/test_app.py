@@ -210,6 +210,16 @@ def test_render_reading_list_without_links(app):
     module._render_reading_list([Paper(title="T", year=2020)], "ABNT")
 
 
+def test_render_demand_with_signal(app):
+    module, _ = app
+    module._render_demand({"term": "drug discovery", "growth": 6.0, "note": "rising", "score": 62})
+
+
+def test_render_demand_none(app):
+    module, _ = app
+    module._render_demand(None)
+
+
 # --- main() -----------------------------------------------------------------
 
 
