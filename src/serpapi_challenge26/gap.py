@@ -25,7 +25,22 @@ _OPEN_MARKERS = (
 _STOPWORDS = frozenset(
     """a an and are as at be by for from in is it of on or that the to with
     com da de do em para por que uma um dos das nos nas e ou mais como entre
-    sobre based using via their its our new study data model""".split()
+    sobre based using via their its our new study data model
+    what do we want whom when how why which who where this these those
+    into beyond without between during""".split()
+)
+
+# Structural/academic boilerplate that never denotes a subtopic. These are
+# excluded so "underexplored" surfaces domain concepts, not article types.
+_GENERIC_TERMS = frozenset(
+    """review reviews survey surveys systematic analysis analyses approach
+    approaches application applications method methods methodology framework
+    frameworks technique techniques algorithm algorithms model models system
+    systems toward towards state art current recent existing novel studies
+    research literature overview perspective case challenge challenges
+    opportunity opportunities future directions advances trend trends
+    comparative comprehensive structured empirical theoretical practical
+    concept concepts principle principles status quo fundamentals""".split()
 )
 
 _PUNCTUATION = ".,;:()[]{}\"'!?—-–"
@@ -42,6 +57,7 @@ class Thresholds:
     hot_ratio: float = 0.6
     top3_concentration: float = 0.6
     underexplored_max_papers: int = 2
+    underexplored_max_avg_cites: float = 200.0
     hot_limit: int = 10
     top_for_metrics: int = 5
     max_score: int = 100
@@ -77,7 +93,8 @@ def _is_term(token: str) -> bool:
     return (
         len(token) >= _MIN_TERM_LENGTH
         and token not in _STOPWORDS
-        and not token.isdigit()
+        and token not in _GENERIC_TERMS
+        and token.isalpha()
     )
 
 
@@ -88,6 +105,18 @@ def _tokens(text: str) -> list[str]:
         if _is_term(token):
             tokens.append(token)
     return tokens
+
+
+def _phrases(text: str) -> list[str]:
+    """Content-bearing unigrams + bigrams from a title.
+
+    Bigrams capture multi-word subtopics (``drug discovery``) that unigrams
+    alone miss; unigrams are the fallback when a concept is a single word.
+    """
+    tokens = _tokens(text)
+    phrases = list(tokens)
+    phrases.extend(f"{tokens[i]} {tokens[i + 1]}" for i in range(len(tokens) - 1))
+    return phrases
 
 
 @dataclass
@@ -157,25 +186,29 @@ class GapAnalyzer:
         }
 
     def subtopic_whitespace(self) -> dict:
-        term_papers: dict[str, set[int]] = defaultdict(set)
-        term_cites: dict[str, list[int]] = defaultdict(list)
+        phrase_papers: dict[str, set[int]] = defaultdict(set)
+        phrase_cites: dict[str, list[int]] = defaultdict(list)
 
         for index, paper in enumerate(self.papers):
-            for term in set(_tokens(paper.title)):
-                term_papers[term].add(index)
-                term_cites[term].append(paper.cited_by)
+            for phrase in set(_phrases(paper.title)):
+                phrase_papers[phrase].add(index)
+                phrase_cites[phrase].append(paper.cited_by)
 
         stats = []
-        for term, paper_indexes in term_papers.items():
-            cites = term_cites[term]
+        for phrase, paper_indexes in phrase_papers.items():
+            cites = phrase_cites[phrase]
             stats.append({
-                "term": term,
+                "term": phrase,
                 "papers": len(paper_indexes),
                 "avg_cites": round(sum(cites) / len(cites), 1),
             })
 
         underexplored = sorted(
-            [stat for stat in stats if stat["papers"] <= THRESHOLDS.underexplored_max_papers],
+            [
+                stat for stat in stats
+                if stat["papers"] <= THRESHOLDS.underexplored_max_papers
+                and stat["avg_cites"] <= THRESHOLDS.underexplored_max_avg_cites
+            ],
             key=lambda stat: (stat["papers"], stat["avg_cites"]),
         )
         hot = sorted(stats, key=lambda stat: (-stat["papers"], -stat["avg_cites"]))[:THRESHOLDS.hot_limit]

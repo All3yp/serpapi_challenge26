@@ -101,6 +101,29 @@ def test_subtopic_whitespace_returns_terms():
     assert report.whitespace["underexplored_terms"]
 
 
+def test_whitespace_uses_phrases_not_question_words():
+    # "what", "do", "we", "want", "from" are stopwords/generic — they must not
+    # surface as underexplored subtopics.
+    papers = [_paper("What do we want from explainable ai", 2020, 0)]
+    report = GapAnalyzer(papers).analyze()
+    terms = [t["term"] for t in report.whitespace["underexplored_terms"]]
+    assert not any(word in term.split() for term in terms for word in ("what", "do", "we", "want", "whom", "when", "how"))
+
+
+def test_whitespace_excludes_highly_cited_terms():
+    # A term with many citations is dominant, not "underexplored", even if it
+    # appears in only one paper.
+    papers = [
+        _paper("Toward a survey of deep learning", 2020, 8000),
+        _paper("Drug discovery with explainable ai", 2021, 30),
+    ]
+    report = GapAnalyzer(papers).analyze()
+    terms = [t["term"] for t in report.whitespace["underexplored_terms"]]
+    assert all("toward" not in t and "survey" not in t for t in terms)
+    # The low-citation niche concept is surfaced.
+    assert any("drug" in t for t in terms)
+
+
 def test_directions_use_structured_ids():
     papers = [_paper("A study", 2015, snippet="future work is still needed")]
     report = GapAnalyzer(papers).analyze()
