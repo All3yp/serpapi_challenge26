@@ -152,6 +152,40 @@ def test_temporal_density_steady():
     assert report.temporal["note"] == "steady"
 
 
+def test_temporal_score_is_continuous_and_monotonic():
+    # Ratio 0 -> 85, ratio 1 -> 30, strictly decreasing in between (no buckets).
+    scores = []
+    for ratio in (0.0, 0.1, 0.5, 1.0):
+        old = max(0, round(10 * (1 - ratio)))
+        recent = 10 - old
+        papers = [_paper("old", 2010)] * old + [_paper("recent", 2026)] * recent
+        scores.append(GapAnalyzer(papers).analyze().temporal["score"])
+    assert scores == sorted(scores, reverse=True)
+    assert scores[0] == 85 and scores[-1] == 30
+
+
+def test_stagnation_score_is_continuous():
+    # Same age but higher concentration -> higher stagnation score.
+    concentrated = [
+        _paper("A", 2015, 100),
+        _paper("B", 2015, 90),
+        _paper("C", 2015, 80),
+        _paper("D", 2020, 5),
+        _paper("E", 2020, 5),
+    ]
+    spread = [
+        _paper("A", 2015, 50),
+        _paper("B", 2015, 45),
+        _paper("C", 2015, 40),
+        _paper("D", 2020, 40),
+        _paper("E", 2020, 40),
+    ]
+    assert (
+        GapAnalyzer(concentrated).analyze().stagnation["score"]
+        > GapAnalyzer(spread).analyze().stagnation["score"]
+    )
+
+
 def test_citation_stagnation_healthy():
     report = GapAnalyzer([_paper("T", 2025, cited_by=10)]).analyze()
     assert report.stagnation["note"] == "healthy"

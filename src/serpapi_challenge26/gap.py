@@ -71,6 +71,18 @@ class Thresholds:
     score_neutral: int = 50
     score_whitespace_base: int = 40
     score_whitespace_step: int = 5
+    whitespace_saturation_terms: int = 12
+
+    # Continuous temporal score: 85 (at ratio 0) -> 30 (at ratio 1).
+    # A linear ramp replaces the three hard buckets (cooling/steady/hot)
+    # that collapsed distinct topics into the same integer.
+    temporal_score_span: float = 55.0
+
+    # Continuous stagnation score driven by top-3 citation concentration and
+    # the age of the most-cited work (stagnation grows as citations pile onto
+    # old papers). Stays a continuous 0..100 instead of 3 fixed buckets.
+    stagnation_age_base: float = 50.0
+    stagnation_age_growth: float = 4.0
 
     # Explicit tiers for the open-questions signal.
     open_many_threshold: int = 3
@@ -87,6 +99,10 @@ class Thresholds:
 
 
 THRESHOLDS = Thresholds()
+
+
+def _clamp(value: float, low: float = 0.0, high: float = 100.0) -> float:
+    return max(low, min(high, value))
 
 
 def _is_term(token: str) -> bool:
@@ -172,11 +188,15 @@ class GapAnalyzer:
         ratio = recent / len(years)
 
         if ratio < THRESHOLDS.cooling_ratio:
-            score, note = THRESHOLDS.score_cooling, "cooling"
+            note = "cooling"
         elif ratio > THRESHOLDS.hot_ratio:
-            score, note = THRESHOLDS.score_hot, "hot"
+            note = "hot"
         else:
-            score, note = THRESHOLDS.score_steady, "steady"
+            note = "steady"
+
+        # Continuous: opportunity is highest when recent activity is low.
+        # Linear ramp from 85 (ratio 0, fully cooling) down to 30 (ratio 1, hot).
+        score = round(THRESHOLDS.score_cooling - THRESHOLDS.temporal_score_span * ratio)
 
         return {
             "score": score,
@@ -213,12 +233,16 @@ class GapAnalyzer:
         )
         hot = sorted(stats, key=lambda stat: (-stat["papers"], -stat["avg_cites"]))[:THRESHOLDS.hot_limit]
 
+        # Continuous: grows linearly with the count of genuine underexplored
+        # phrases and saturates at `whitespace_saturation_terms`, so a field
+        # with 12+ untouched niches reads as fully open rather than everything
+        # clipping at 100 via `40 + 5*n`.
         score = THRESHOLDS.score_whitespace_base
         if underexplored:
-            score = min(
-                THRESHOLDS.max_score,
-                THRESHOLDS.score_whitespace_base + len(underexplored) * THRESHOLDS.score_whitespace_step,
+            score += THRESHOLDS.score_whitespace_step * min(
+                len(underexplored), THRESHOLDS.whitespace_saturation_terms
             )
+        score = round(_clamp(score))
 
         return {"score": score, "underexplored_terms": underexplored, "hot_terms": hot}
 
@@ -242,11 +266,19 @@ class GapAnalyzer:
         concentrated = top3_share >= THRESHOLDS.top3_concentration
 
         if stagnant and concentrated:
-            score, note = THRESHOLDS.score_stagnant_concentrated, "stagnant_concentrated"
+            note = "stagnant_concentrated"
         elif stagnant:
-            score, note = THRESHOLDS.score_stagnant, "stagnant"
+            note = "stagnant"
         else:
-            score, note = THRESHOLDS.score_healthy, "healthy"
+            note = "healthy"
+
+        # Continuous: opportunity grows as the most-cited work ages (citations
+        # still locked onto old papers) and as the top-3 concentration rises.
+        # A "healthy" but old field can still score above 35 when its citations
+        # are heavily concentrated, instead of collapsing to a fixed 35.
+        age = CURRENT_YEAR - avg_year if avg_year is not None else 0.0
+        age_component = THRESHOLDS.stagnation_age_base + THRESHOLDS.stagnation_age_growth * age
+        score = round(_clamp(age_component * (0.5 + top3_share)))
 
         return {
             "score": score,
