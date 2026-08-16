@@ -15,6 +15,6 @@ _SRC = Path(__file__).resolve().parent / "src"
 if str(_SRC) not in sys.path:
     sys.path.insert(0, str(_SRC))
 
-from serpapi_challenge26.app import main  # noqa: E402
+from gap_finder.app import main  # noqa: E402
 
 main()

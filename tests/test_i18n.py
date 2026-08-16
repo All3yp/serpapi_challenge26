@@ -1,4 +1,4 @@
-from serpapi_challenge26 import i18n
+from gap_finder import i18n
 
 
 def test_lang_from_locale_prefix():

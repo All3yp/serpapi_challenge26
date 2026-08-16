@@ -42,7 +42,7 @@ Média ponderada dos quatro sinais, cada um normalizado e limitado a 0–100:
 | Estagnação | 0.25 | citações concentradas em trabalho antigo |
 | Open questions | 0.15 | declarações explícitas de "future work" / lacuna |
 
-Pesos e limiares ficam em `src/serpapi_challenge26/gap.py` (`Thresholds`), ajustáveis sem tocar na lógica.
+Pesos e limiares ficam em `src/gap_finder/gap.py` (`Thresholds`), ajustáveis sem tocar na lógica.
 
 ### Uso da SerpApi
 
@@ -148,7 +148,7 @@ uv run pytest
 ## Estrutura
 
 ```
-src/serpapi_challenge26/
+src/gap_finder/
   app.py        UI Streamlit (bilíngue, tabs)
   scholar.py    busca + normalização + formatação de citações
   gap.py        os 4 sinais de lacuna + score + direções

@@ -7,7 +7,7 @@ import types
 
 import pytest
 
-from serpapi_challenge26.scholar import Paper
+from gap_finder.scholar import Paper
 
 
 class _Ctx:
@@ -96,8 +96,8 @@ def app(monkeypatch):
             continue
         setattr(mod, name, getattr(fake, name))
     monkeypatch.setitem(sys.modules, "streamlit", mod)
-    sys.modules.pop("serpapi_challenge26.app", None)
-    module = importlib.import_module("serpapi_challenge26.app")
+    sys.modules.pop("gap_finder.app", None)
+    module = importlib.import_module("gap_finder.app")
     return module, fake
 
 
@@ -322,7 +322,7 @@ def test_package_main_launches_streamlit(monkeypatch):
     monkeypatch.setitem(sys.modules, "streamlit.web", web_mod)
     monkeypatch.setitem(sys.modules, "streamlit.web.cli", cli_mod)
 
-    import serpapi_challenge26 as pkg
+    import gap_finder as pkg
 
     pkg.main()
     assert len(calls) == 1
@@ -331,7 +331,7 @@ def test_package_main_launches_streamlit(monkeypatch):
 
 
 def test_main_py_entrypoint_calls_main(monkeypatch):
-    import serpapi_challenge26 as pkg
+    import gap_finder as pkg
 
     called = []
     monkeypatch.setattr(pkg, "main", lambda: called.append("ran"))

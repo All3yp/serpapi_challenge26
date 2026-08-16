@@ -1561,7 +1561,7 @@ wheels = [
 ]
 
 [[package]]
-name = "serpapi-challenge26"
+name = "gap-finder"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

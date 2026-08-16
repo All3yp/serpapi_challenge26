@@ -1,5 +1,5 @@
-from serpapi_challenge26.gap import GapAnalyzer, THRESHOLDS
-from serpapi_challenge26.scholar import Paper
+from gap_finder.gap import GapAnalyzer, THRESHOLDS
+from gap_finder.scholar import Paper
 
 
 def _paper(title, year, cited_by=0, snippet=""):

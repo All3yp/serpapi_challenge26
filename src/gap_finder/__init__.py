@@ -1,4 +1,4 @@
-"""SerpApi Nordeste Coding Challenge 2026 — Gap Finder."""
+"""Gap Finder — research-gap discovery built on SerpApi (Google Scholar)."""
 
 from __future__ import annotations
 

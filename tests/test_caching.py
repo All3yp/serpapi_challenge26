@@ -1,7 +1,7 @@
 import pytest
 import serpapi
 
-from serpapi_challenge26.caching import CacheMiss, CachedResponse, CachingClient
+from gap_finder.caching import CacheMiss, CachedResponse, CachingClient
 
 
 def test_cache_key_excludes_api_key(tmp_path):

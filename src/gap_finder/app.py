@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from serpapi_challenge26 import (
+from gap_finder import (
     CURRENT_YEAR,
     CachingClient,
     CacheMiss,

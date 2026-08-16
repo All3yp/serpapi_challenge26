@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from serpapi_challenge26 import config
+from gap_finder import config
 
 _ENV_KEYS = ("SERPAPIKEY", "SERPAPI_MODE", "OTHER")
 

@@ -1,4 +1,4 @@
-from serpapi_challenge26 import main
+from gap_finder import main
 
 if __name__ == "__main__":
     main()

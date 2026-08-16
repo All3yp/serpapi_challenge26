@@ -1,4 +1,4 @@
-from serpapi_challenge26.scholar import (
+from gap_finder.scholar import (
     Paper,
     Scholar,
     _coerce_int,
@@ -358,14 +358,14 @@ def test_first_pdf_prefers_pdf_format():
 
 
 def test_drop_trailing_year_strips_comma_year():
-    from serpapi_challenge26.scholar import _drop_trailing_year
+    from gap_finder.scholar import _drop_trailing_year
 
     assert _drop_trailing_year("Some Venue, 2020") == "Some Venue"
     assert _drop_trailing_year("No year here") == "No year here"
 
 
 def test_author_initials_skips_empty_and_particles():
-    from serpapi_challenge26.scholar import _author_initials
+    from gap_finder.scholar import _author_initials
 
     assert _author_initials("João Carlos da Silva") == "J. C."
     assert _author_initials("Silva") == ""

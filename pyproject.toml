@@ -1,5 +1,5 @@
 [project]
-name = "serpapi-challenge26"
+name = "gap-finder"
 version = "0.1.0"
 description = "Gap Finder — a research-gap finder built on SerpApi (Google Scholar)"
 readme = "README.md"
@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-gap-finder = "serpapi_challenge26:main"
+gap-finder = "gap_finder:main"
 
 [dependency-groups]
 dev = [
@@ -27,7 +27,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/serpapi_challenge26"]
+packages = ["src/gap_finder"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
