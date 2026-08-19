@@ -28,6 +28,8 @@ class _FakeStreamlit:
         self.error_calls = []
         self.warning_calls = []
         self.info_calls = []
+        self.text_input_defaults = []
+        self.selectbox_overrides = {}
 
     # -- widget/rendering surface -------------------------------------------
     def set_page_config(self, **kwargs):
@@ -43,13 +45,14 @@ class _FakeStreamlit:
         pass
 
     def text_input(self, label, value="", **kwargs):
+        self.text_input_defaults.append(value)
         return value
 
     def slider(self, label, *args, **kwargs):
         return args[2] if len(args) > 2 else kwargs.get("value")
 
     def selectbox(self, label, options, index=0, **kwargs):
-        return options[index]
+        return self.selectbox_overrides.get(label, options[index])
 
     def button(self, label, **kwargs):
         return self.button_result
@@ -275,6 +278,17 @@ def test_main_returns_early_when_not_run(app, monkeypatch):
     fake.button_result = False
     _patch_main(module, monkeypatch)
     module.main()
+
+
+def test_main_uses_demo_topic_selection(app, monkeypatch):
+    module, fake = app
+    fake.button_result = False
+    fake.selectbox_overrides["Demo topic"] = "climate change adaptation"
+    _patch_main(module, monkeypatch)
+
+    module.main()
+
+    assert "climate change adaptation" in fake.text_input_defaults
 
 
 def test_main_full_happy_path(app, monkeypatch):

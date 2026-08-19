@@ -3,8 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-
-CURRENT_YEAR = 2026
+from datetime import date
 
 _VENUE_STRIP = " …·,;:"
 _YEAR_START = 1900
@@ -12,6 +11,15 @@ _YEAR_START = 1900
 _PARTICLES = frozenset({"da", "de", "do", "das", "dos", "e", "del", "van", "von"})
 _PAGE_SIZE = 20
 _MAX_PAGES = 50
+
+
+
+
+def current_year() -> int:
+    return date.today().year
+
+
+CURRENT_YEAR = current_year()
 
 
 @dataclass

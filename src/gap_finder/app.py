@@ -60,6 +60,12 @@ _MODE_LABELS = {
     "record": "Record (live + save)",
 }
 
+_DEMO_TOPICS = (
+    "explainable artificial intelligence",
+    "climate change adaptation",
+    "quantum machine learning",
+)
+
 _CSS = """
 <style>
 :root {
@@ -127,6 +133,10 @@ def _lang() -> str:
     if override:
         return override
     return detect_lang()
+
+
+def _demo_topic_label() -> str:
+    return _("Demo topic")
 
 
 def _score_label(score: int) -> str:
@@ -335,7 +345,8 @@ def main() -> None:
             index=_MODE_VALUES.index(default_mode) if default_mode in _MODE_VALUES else 0,
             key="mode",
         )
-        query = st.text_input(_("Research topic"), value="explainable artificial intelligence")
+        demo_topic = st.selectbox(_demo_topic_label(), _DEMO_TOPICS)
+        query = st.text_input(_("Research topic"), value=demo_topic)
         num = st.slider(
             _("Number of papers"),
             _MIN_PAPERS,

@@ -1,8 +1,11 @@
+import datetime
+
 from gap_finder.scholar import (
     Paper,
     Scholar,
     _coerce_int,
     _scan_years,
+    current_year,
     extract_year,
     extract_venue,
     format_abnt,
@@ -23,6 +26,19 @@ def test_scan_years_extracts_full_years():
 
 def test_scan_years_ignores_out_of_range_years():
     assert _scan_years("1899 and 2100") == []
+
+
+def test_current_year_uses_current_calendar_year(monkeypatch):
+    class FakeDate(datetime.date):
+        @classmethod
+        def today(cls):
+            return cls(2030, 1, 1)
+
+    import gap_finder.scholar as scholar
+
+    monkeypatch.setattr(scholar, "date", FakeDate)
+
+    assert scholar.current_year() == 2030
 
 
 def test_extract_year_prefers_latest():

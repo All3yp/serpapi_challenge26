@@ -15,6 +15,9 @@ msgstr "Busca no Google Scholar + análise local de lacunas de pesquisa."
 msgid "Research topic"
 msgstr "Tema de pesquisa"
 
+msgid "Demo topic"
+msgstr "Tópico demo"
+
 msgid "Number of papers"
 msgstr "Número de papers"
 

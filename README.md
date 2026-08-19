@@ -18,7 +18,7 @@ Você digita um tema (ex.: *explainable artificial intelligence*) e o app:
    - **Questões abertas declaradas** — papers que dizem literalmente *"future work" / "remains open" / "pouco se sabe"*
 3. Gera um **índice de oportunidade de gap (0–100)**, direções sugeridas e uma **reading list** com citações formatadas.
 
-Interface **bilíngue** (PT-BR / EN) e **modo offline** que não gasta créditos.
+Interface **bilíngue** (PT-BR / EN), **modo offline** que não gasta créditos e tópicos demo prontos para avaliação rápida.
 
 ---
 
@@ -89,6 +89,12 @@ uv run python main.py
 
 Abra `http://localhost:8501`.
 
+Tópicos demo disponíveis no app:
+
+- `explainable artificial intelligence`
+- `climate change adaptation`
+- `quantum machine learning`
+
 ---
 
 ## Modos de cache (não estoure seus créditos)
@@ -115,7 +121,7 @@ O app roda **sem chave nenhuma** em `replay` (usa `fixtures/`). Isso torna o pro
 
    ```
    SERPAPIKEY = "sua_chave"
-   SERPAPI_MODE = "online"     # ou "replay" para demo sem custo
+   SERPAPI_MODE = "replay"     # demo sem custo; use "online" para dados ao vivo
    ```
 
 O app lê a chave de `st.secrets` automaticamente (`config.py`).
@@ -141,7 +147,7 @@ Os títulos/snippets/autores **não são traduzidos** — são dados-fonte do Sc
 uv run pytest
 ```
 
-139 testes cobrindo análise de gap, paginação, cache, citação, i18n e a camada de UI.
+160 testes cobrindo análise de gap, paginação, cache, citação, i18n e a camada de UI.
 
 ---
 
@@ -160,6 +166,10 @@ fixtures/         respostas gravadas do Scholar (modo replay)
 locale/           catálogos de tradução (.po/.mo)
 tests/            suíte de testes
 ```
+
+## Licença
+
+MIT — veja [`LICENSE`](LICENSE).
 
 ## Autor
 
